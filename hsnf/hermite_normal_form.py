@@ -51,22 +51,47 @@ def _hnf(M, L, s):
         return _hnf(M, L, s)
 
 
-def hermite_normal_form(M):
+def row_style_hermite_normal_form(M):
     """
-    calculate Hermite normal form
+    calculate row-style Hermite normal form
+    H = LM
 
     Parameters
     ----------
-    M: array
+    M: array, (m, n)
 
     Returns
     -------
-    H: array
-    L: array
-        H = np.dot(L, M)
-        L is unimodular
+    H: array, (m, n)
+        Hermite normal form of M, upper-triangular integer matrix
+    L: array, (m, m)
+        unimodular matrix s.t. H = np.dot(L, M)
     """
     MM = np.copy(M)
     L = np.eye(M.shape[0], dtype=int)
     H, L = _hnf(MM, L, s=0)
     return H, L
+
+
+def column_style_hermite_normal_form(M):
+    """
+    calculate column-style Hermite normal form
+    H = MR
+
+    Parameters
+    ----------
+    M: array, (m, n)
+
+    Returns
+    -------
+    H: array, (m, n)
+        Hermite normal form of M, lower-triangular integer matrix
+    R: array, (n, n)
+        unimodular matrix s.t. H = np.dot(M, R)
+    """
+    MM_T = np.copy(M.T)
+    R_T = np.eye(M.shape[1], dtype=int)
+    H_T, R_T = _hnf(MM_T, R_T, s=0)
+    H = H_T.T
+    R = R_T.T
+    return H, R
