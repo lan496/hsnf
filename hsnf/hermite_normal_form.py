@@ -89,9 +89,7 @@ def column_style_hermite_normal_form(M):
     R: array, (n, n)
         unimodular matrix s.t. H = np.dot(M, R)
     """
-    MM_T = np.copy(M.T)
-    R_T = np.eye(M.shape[1], dtype=int)
-    H_T, R_T = _hnf(MM_T, R_T, s=0)
+    H_T, R_T = row_style_hermite_normal_form(M.T)
     H = H_T.T
     R = R_T.T
     return H, R
