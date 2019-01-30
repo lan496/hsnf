@@ -1,5 +1,5 @@
 # hsnf
-Compute Hermite normal form and Smith normal form
+Compute Hermite normal form and Smith normal form with transformation matrices
 
 ## Usage
 ```example.py
@@ -62,7 +62,7 @@ R = array([
     [   0,    0,    1,    6],
     [   0,  -44, -193,    1]])
 """
-np.dot(M, R)  # equal to H
+np.dot(M, R)  # equal to H, lower-triangular
 np.abs(np.linalg.det(R))  # equal to 1
 ```
 
