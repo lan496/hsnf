@@ -60,7 +60,7 @@ def is_lone(M, s):
 def get_nextentry(M, s):
     for i in range(s + 1, M.shape[0]):
         for j in range(s + 1, M.shape[1]):
-            if M[i, j] % M[s, s] != 0:
+            if (M[s, s] != 0) and (M[i, j] % M[s, s] != 0):
                 return i, j
     return None
 
