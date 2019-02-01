@@ -39,11 +39,14 @@ def change_sign_column(M, i):
 
 
 def get_min_abs(M, s):
-    ret = (s, s)
-    valmin = np.max(np.abs(M[s:, s:])) + 1
+    """
+    return argmin_{i, j} abs(M[i, j]) s.t. (i >= s and j >= s and M[i, j] != 0)
+    """
+    ret = (None, None)
+    valmin = np.max(np.abs(M[s:, s:]))
     for i in range(s, M.shape[0]):
         for j in range(s, M.shape[1]):
-            if (M[i, j] != 0) and abs(M[i, j]) < valmin:
+            if (M[i, j] != 0) and abs(M[i, j]) <= valmin:
                 ret = i, j
                 valmin = abs(M[i, j])
     return ret
@@ -58,29 +61,40 @@ def is_lone(M, s):
 
 
 def get_nextentry(M, s):
+    """
+    return entry which is not diviable by M[s, s]
+    assume M[s, s] is not zero.
+    """
     for i in range(s + 1, M.shape[0]):
         for j in range(s + 1, M.shape[1]):
-            if (M[s, s] != 0) and (M[i, j] % M[s, s] != 0):
+            if M[i, j] % M[s, s] != 0:
                 return i, j
     return None
 
 
 def _snf(M, L, R, s):
-    if (s == M.shape[0] - 1) or (s == M.shape[1] - 1):
-        if M[s, s] < 0:
-            M, L = change_sign_row(M, s), change_sign_row(L, s)
+    """
+    determine up to the s-th row and column elements
+    """
+    if s == min(M.shape):
         return M, L, R
 
+    # choose a pivot
+    num_row, num_column = M.shape
     col, row = get_min_abs(M, s)
+    if col is None:
+        return M, L, R
     M, L = swap_rows(M, s, col), swap_rows(L, s, col)
     M, R = swap_columns(M, s, row), swap_columns(R, s, row)
 
-    for i in range(s + 1, M.shape[0]):
+    # eliminate the s-th column entries
+    for i in range(s + 1, num_row):
         if M[i, s] != 0:
             k = M[i, s] // M[s, s]
             M, L = add_to_row(M, i, s, -k), add_to_row(L, i, s, -k)
 
-    for j in range(s + 1, M.shape[1]):
+    # eliminate the s-th row entries
+    for j in range(s + 1, num_column):
         if M[s, j] != 0:
             k = M[s, j] // M[s, s]
             M, R = add_to_column(M, j, s, -k), add_to_column(R, j, s, -k)

@@ -7,7 +7,7 @@ from hsnf.smith_normal_form import smith_normal_form
 
 class TestSmithNormalForm(unittest.TestCase):
 
-    def test_smf(self):
+    def test_snf(self):
         list_matrix = [
             np.array([
                 [2, 0],
@@ -53,10 +53,35 @@ class TestSmithNormalForm(unittest.TestCase):
 
         for M, expected in zip(list_matrix, list_expected):
             D, L, R = smith_normal_form(M)
-            D_re = np.dot(L, np.dot(M, R))
-            self.assertAlmostEqual(np.linalg.det(L) ** 2, 1)
-            self.assertAlmostEqual(np.linalg.det(R) ** 2, 1)
-            self.assertTrue(np.array_equal(D_re, D))
+            self.verify_snf(M, D, L, R)
+
+    def test_snf_for_random_matrix(self):
+        random_state = 0
+        list_size = [
+            (1000, 3, 7),
+            (1000, 11, 5),
+            (1000, 13, 13)
+        ]
+        np.random.seed(random_state)
+
+        for size in list_size:
+            X = np.random.randint(-1, 1, size=size)
+            for i in range(size[0]):
+                D, L, R = smith_normal_form(X[i])
+                self.verify_snf(X[i], D, L, R)
+
+    def verify_snf(self, M, D, L, R):
+        D_re = np.dot(L, np.dot(M, R))
+        self.assertAlmostEqual(np.linalg.det(L) ** 2, 1)
+        self.assertAlmostEqual(np.linalg.det(R) ** 2, 1)
+        self.assertTrue(np.array_equal(D_re, D))
+
+        D_diag = np.diagonal(D)
+        rank = np.count_nonzero(D_diag)
+        self.assertEqual(np.count_nonzero(D) - rank, 0)
+
+        for i in range(rank - 1):
+            self.assertTrue(D_diag[i + 1] % D_diag[i] == 0)
 
 
 if __name__ == '__main__':
