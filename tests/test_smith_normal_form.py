@@ -7,7 +7,7 @@ from hsnf.smith_normal_form import smith_normal_form
 
 class TestSmithNormalForm(unittest.TestCase):
 
-    def test_smf(self):
+    def test_snf(self):
         list_matrix = [
             np.array([
                 [2, 0],
@@ -57,6 +57,25 @@ class TestSmithNormalForm(unittest.TestCase):
             self.assertAlmostEqual(np.linalg.det(L) ** 2, 1)
             self.assertAlmostEqual(np.linalg.det(R) ** 2, 1)
             self.assertTrue(np.array_equal(D_re, D))
+
+    def test_snf_for_random_matrix(self):
+        random_state = 0
+        size = (10000, 3, 7)
+        np.random.seed(random_state)
+
+        X = np.random.random_integers(-1, 1, size=size)
+        for i in range(size[0]):
+            D, L, R = smith_normal_form(X[i])
+            self.verify_snf(X[i], D, L, R)
+
+    def verify_snf(self, M, D, L, R):
+        D_re = np.dot(L, np.dot(M, R))
+        self.assertAlmostEqual(np.linalg.det(L) ** 2, 1)
+        self.assertAlmostEqual(np.linalg.det(R) ** 2, 1)
+        self.assertTrue(np.array_equal(D_re, D))
+        print(M)
+        print(D)
+        self.assertEqual(np.count_nonzero(D) - np.count_nonzero(np.diagonal(D)), 0)
 
 
 if __name__ == '__main__':
