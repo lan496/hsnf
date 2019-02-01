@@ -30,15 +30,15 @@ def get_min_abs(M, s):
 
 
 def _hnf(M, L, s):
-    if (s == M.shape[0] - 1) or (s == M.shape[1] - 1):
-        if M[s, s] < 0:
-            M, L = change_sign_row(M, s), change_sign_row(L, s)
+    if s == min(M.shape):
         return M, L
 
+    # choose a pivot
+    num_row, num_column = M.shape
     row = get_min_abs(M, s)
     M, L = swap_rows(M, s, row), swap_rows(L, s, row)
 
-    for i in range(s + 1, M.shape[0]):
+    for i in range(s + 1, num_row):
         if M[i, s] != 0:
             k = M[i, s] // M[s, s]
             M, L = add_to_row(M, i, s, -k), add_to_row(L, i, s, -k)

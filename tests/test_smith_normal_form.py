@@ -53,10 +53,7 @@ class TestSmithNormalForm(unittest.TestCase):
 
         for M, expected in zip(list_matrix, list_expected):
             D, L, R = smith_normal_form(M)
-            D_re = np.dot(L, np.dot(M, R))
-            self.assertAlmostEqual(np.linalg.det(L) ** 2, 1)
-            self.assertAlmostEqual(np.linalg.det(R) ** 2, 1)
-            self.assertTrue(np.array_equal(D_re, D))
+            self.verify_snf(M, D, L, R)
 
     def test_snf_for_random_matrix(self):
         random_state = 0
