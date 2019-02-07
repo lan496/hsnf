@@ -68,4 +68,5 @@ np.abs(np.linalg.det(R))  # equal to 1
 
 ## References
 - http://www.dlfer.xyz/post/2016-10-27-smith-normal-form/
+
 I appreciate D.L. Ferrario's instructive blog post and his approval for refering his scripts.

@@ -1,3 +1,5 @@
+# Copyright (c) 2019 Kohei Shinohara
+# Distributed under the terms of the MIT License.
 import numpy as np
 
 

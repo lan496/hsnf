@@ -1,3 +1,6 @@
+# Copyright (c) 2019 Kohei Shinohara
+# Distributed under the terms of the MIT License.
+
 import unittest
 
 import numpy as np
