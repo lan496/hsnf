@@ -16,6 +16,7 @@ class TestNormalForm(unittest.TestCase):
 
     def test_snf(self):
         np.random.seed(self.random_state)
+        # test for square and non-square matrices
         list_size = [
             (1000, 3, 7),
             (1000, 11, 5),
@@ -30,6 +31,7 @@ class TestNormalForm(unittest.TestCase):
 
     def test_hnf(self):
         np.random.seed(self.random_state)
+        # test for square and non-square matrices
         list_size = [
             (1000, 3, 7),
             (1000, 11, 5),
@@ -47,9 +49,12 @@ class TestNormalForm(unittest.TestCase):
 
     def verify_snf(self, M, D, L, R):
         D_re = np.dot(L, np.dot(M, R))
+        self.assertTrue(np.array_equal(D_re, D))
+
+        # TODO: When absolute value of matrix elements are very big,
+        # the following tests may be failed due to overflow or floating point error
         self.assertEqual(np.around(np.abs(np.linalg.det(L))), 1)
         self.assertEqual(np.around(np.abs(np.linalg.det(R))), 1)
-        self.assertTrue(np.array_equal(D_re, D))
 
         D_diag = np.diagonal(D)
         rank = np.count_nonzero(D_diag)
@@ -60,13 +65,21 @@ class TestNormalForm(unittest.TestCase):
 
     def verify_row_style_hnf(self, M, H, L):
         H_re = np.dot(L, M)
+
+        # TODO: When absolute value of matrix elements are very big,
+        # the following tests may be failed due to overflow or floating point error
         self.assertEqual(np.around(np.abs(np.linalg.det(L))), 1)
+
         self.assertTrue(np.array_equal(H_re, H))
         self.assertTrue(np.allclose(H, np.triu(H)))
 
     def verify_column_style_hnf(self, M, H, R):
         H_re = np.dot(M, R)
+
+        # TODO: When absolute value of matrix elements are very big,
+        # the following tests may be failed due to overflow or floating point error
         self.assertEqual(np.around(np.abs(np.linalg.det(R))), 1)
+
         self.assertTrue(np.array_equal(H_re, H))
         self.assertTrue(np.allclose(H, np.tril(H)))
 

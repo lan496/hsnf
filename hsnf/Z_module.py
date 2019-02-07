@@ -60,6 +60,7 @@ class ZmoduleHomomorphism:
     def _get_min_abs(self, s, row_only=False, column_only=False):
         """
         return argmin_{i, j} abs(A[i, j]) s.t. (i >= s and j >= s and A[i, j] != 0)
+        if failed, return None
         """
         if (not row_only) and (not column_only):
             ret = (None, None)
@@ -89,6 +90,9 @@ class ZmoduleHomomorphism:
         return ret
 
     def _is_lone(self, s):
+        """
+        check if all s-th row elements column elements become zero
+        """
         if np.nonzero(self._A[s, (s + 1):])[0].size != 0:
             return False
         if np.nonzero(self._A[(s + 1):, s])[0].size != 0:
@@ -108,7 +112,7 @@ class ZmoduleHomomorphism:
 
     def _snf(self, s):
         """
-        determine up to the s-th row and column elements
+        determine SNF up to the s-th row and column elements
         """
         if s == min(self._A.shape):
             return self._A, self._basis_from, self._basis_to
@@ -116,6 +120,7 @@ class ZmoduleHomomorphism:
         # choose a pivot
         col, row = self._get_min_abs(s)
         if col is None:
+            # if there does not remain non-zero elements, this procesure ends.
             return self._A, self._basis_from, self._basis_to
         self._swap_from(s, col)
         self._swap_to(s, row)
@@ -132,6 +137,7 @@ class ZmoduleHomomorphism:
                 k = self._A[s, j] // self._A[s, s]
                 self._add_to(j, s, -k)
 
+        # if there does not remain non-zero element in s-th row and column, find a next entry
         if self._is_lone(s):
             res = self._get_nextentry(s)
             if res:
@@ -147,6 +153,9 @@ class ZmoduleHomomorphism:
     def smith_normal_form(self):
         """
         calculate Smith normal form
+
+        see the following awesome post for a description of this algorithm:
+            http://www.dlfer.xyz/post/2016-10-27-smith-normal-form/
 
         Returns
         -------
@@ -171,7 +180,7 @@ class ZmoduleHomomorphism:
 
     def _hnf_row(self, s):
         """
-        determine up to the s-th row and column elements
+        determine row-style HNF up to the s-th row and column elements
         """
         if s == min(self._A.shape):
             return self._A, self._basis_from
@@ -179,6 +188,7 @@ class ZmoduleHomomorphism:
         # choose a pivot
         row = self._get_min_abs(s, row_only=True)
         if row is None:
+            # if there does not remain non-zero elements, this procesure ends.
             return self._A, self._basis_from
         self._swap_from(s, row)
 
@@ -188,6 +198,7 @@ class ZmoduleHomomorphism:
                 k = self._A[i, s] // self._A[s, s]
                 self._add_from(i, s, -k)
 
+        # if there does not remain non-zero element in s-th row, find a next entry
         if np.nonzero(self._A[(s + 1):, s])[0].size == 0:
             if self._A[s, s] < 0:
                 self._change_sign_from(s)
@@ -205,6 +216,7 @@ class ZmoduleHomomorphism:
         # choose a pivot
         col = self._get_min_abs(s, column_only=True)
         if col is None:
+            # if there does not remain non-zero elements, this procesure ends.
             return self._A, self._basis_to
         self._swap_to(s, col)
 
@@ -214,6 +226,7 @@ class ZmoduleHomomorphism:
                 k = self._A[s, j] // self._A[s, s]
                 self._add_to(j, s, -k)
 
+        # if there does not remain non-zero element in s-th column, find a next entry
         if np.nonzero(self._A[s, (s + 1):])[0].size == 0:
             if self._A[s, s] < 0:
                 self._change_sign_to(s)
@@ -271,6 +284,8 @@ class ZmoduleHomomorphism:
     @classmethod
     def with_standard_basis(cls, A):
         """
+        create homomorhism with regard A as a matrix representation with standard basis
+
         Parameters
         ----------
         A: array, (m, n)
