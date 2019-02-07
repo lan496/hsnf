@@ -285,3 +285,64 @@ class ZmoduleHomomorphism:
         basis_to = cls._standard_basis(n)
 
         return cls(A, basis_from, basis_to)
+
+
+def smith_normal_form(M):
+    """
+    calculate Smith normal form
+
+    Parameters
+    ----------
+    M: array, (m, n)
+        integer matrix
+
+    Returns
+    -------
+    D: array, (m, n)
+    L: array, (m, m)
+    R: array, (n, n)
+        D = np.dot(L, np.dot(M, R))
+        L, R are unimodular.
+    """
+    zmh = ZmoduleHomomorphism.with_standard_basis(M)
+    return zmh.smith_normal_form()
+
+
+def row_style_hermite_normal_form(M):
+    """
+    calculate row-style Hermite normal form
+    H = LM
+
+    Parameters
+    ----------
+    M: array, (m, n)
+
+    Returns
+    -------
+    H: array, (m, n)
+        Hermite normal form of M, upper-triangular integer matrix
+    L: array, (m, m)
+        unimodular matrix s.t. H = np.dot(L, M)
+    """
+    zmh = ZmoduleHomomorphism.with_standard_basis(M)
+    return zmh.hermite_normal_form(style='row')
+
+
+def column_style_hermite_normal_form(M):
+    """
+    calculate column-style Hermite normal form
+    H = MR
+
+    Parameters
+    ----------
+    M: array, (m, n)
+
+    Returns
+    -------
+    H: array, (m, n)
+        Hermite normal form of M, lower-triangular integer matrix
+    R: array, (n, n)
+        unimodular matrix s.t. H = np.dot(M, R)
+    """
+    zmh = ZmoduleHomomorphism.with_standard_basis(M)
+    return zmh.hermite_normal_form(style='column')
