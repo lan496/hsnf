@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #
 # hsnf documentation build configuration file, created by
-# sphinx-quickstart on Tue Feb 12 18:56:42 2019.
+# sphinx-quickstart on Tue Feb 12 19:40:45 2019.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -34,6 +34,7 @@
 extensions = ['sphinx.ext.autodoc',
     'sphinx.ext.todo',
     'sphinx.ext.mathjax',
+    'sphinx.ext.viewcode',
     'sphinx.ext.githubpages']
 
 # Add any paths that contain templates here, relative to this directory.
