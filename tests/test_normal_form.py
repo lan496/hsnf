@@ -54,11 +54,6 @@ class TestNormalForm(unittest.TestCase):
         D_re = np.dot(L, np.dot(M, R))
         self.assertTrue(np.array_equal(D_re, D))
 
-        # TODO: When absolute value of matrix elements are very big,
-        # the following tests may be failed due to overflow or floating point error
-        self.assertEqual(np.around(np.abs(np.linalg.det(L))), 1)
-        self.assertEqual(np.around(np.abs(np.linalg.det(R))), 1)
-
         D_diag = np.diagonal(D)
         rank = np.count_nonzero(D_diag)
         self.assertEqual(np.count_nonzero(D) - rank, 0)
@@ -66,25 +61,30 @@ class TestNormalForm(unittest.TestCase):
         for i in range(rank - 1):
             self.assertTrue(D_diag[i + 1] % D_diag[i] == 0)
 
+        self.is_unimodular(L)
+        self.is_unimodular(R)
+
     def verify_row_style_hnf(self, M, H, L):
         H_re = np.dot(L, M)
-
-        # TODO: When absolute value of matrix elements are very big,
-        # the following tests may be failed due to overflow or floating point error
-        self.assertEqual(np.around(np.abs(np.linalg.det(L))), 1)
 
         self.assertTrue(np.array_equal(H_re, H))
         self.assertTrue(np.allclose(H, np.triu(H)))
 
+        self.is_unimodular(L)
+
     def verify_column_style_hnf(self, M, H, R):
         H_re = np.dot(M, R)
 
-        # TODO: When absolute value of matrix elements are very big,
-        # the following tests may be failed due to overflow or floating point error
-        self.assertEqual(np.around(np.abs(np.linalg.det(R))), 1)
-
         self.assertTrue(np.array_equal(H_re, H))
         self.assertTrue(np.allclose(H, np.tril(H)))
+
+        self.is_unimodular(R)
+
+    def is_unimodular(self, A):
+        self.assertAlmostEqual(np.abs(np.linalg.det(A)), 1)
+
+        A_inv = np.around(np.linalg.inv(A))
+        self.assertTrue(np.allclose(np.eye(A.shape[0]), np.dot(A, A_inv)))
 
 
 if __name__ == '__main__':
