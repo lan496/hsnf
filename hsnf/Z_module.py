@@ -204,6 +204,15 @@ class ZmoduleHomomorphism:
         if np.nonzero(self._A[(s + 1):, s])[0].size == 0:
             if self._A[s, s] < 0:
                 self._change_sign_from(s)
+
+            """
+            if self._A[s, s] != 0:
+                for i in range(s):
+                    k = self._A[i, s] // self._A[s, s]
+                    if k != 0:
+                        self._add_to(i, s, -k)
+            """
+
             return self._hnf_row(s + 1)
         else:
             return self._hnf_row(s)
@@ -232,6 +241,15 @@ class ZmoduleHomomorphism:
         if np.nonzero(self._A[s, (s + 1):])[0].size == 0:
             if self._A[s, s] < 0:
                 self._change_sign_to(s)
+
+            """
+            if self._A[s, s] != 0:
+                for j in range(s):
+                    k = self._A[s, j] // self._A[s, s]
+                    if k != 0:
+                        self._add_to(j, s, -k)
+            """
+
             return self._hnf_column(s + 1)
         else:
             return self._hnf_column(s)

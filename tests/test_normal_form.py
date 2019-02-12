@@ -69,14 +69,19 @@ class TestNormalForm(unittest.TestCase):
 
         self.assertTrue(np.array_equal(H_re, H))
         self.assertTrue(np.allclose(H, np.triu(H)))
+        # self.assertTrue(np.min(H) >= 0)
+        # self.assertTrue(np.allclose(np.max(H, axis=1), np.diagonal(H)))
 
         self.is_unimodular(L)
 
     def verify_column_style_hnf(self, M, H, R):
         H_re = np.dot(M, R)
 
+        print(H)
         self.assertTrue(np.array_equal(H_re, H))
         self.assertTrue(np.allclose(H, np.tril(H)))
+        self.assertTrue(np.min(H) >= 0)
+        self.assertTrue(np.allclose(np.max(H, axis=1), np.diagonal(H)))
 
         self.is_unimodular(R)
 
