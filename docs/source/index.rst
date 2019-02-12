@@ -3,8 +3,24 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to hsnf's documentation!
+=======================================================
+Definition of Smith normal form and Hermite normal form
+=======================================================
+
+
+Smith normal form
+=================
+
+Row-style Hermite normal form
+=============================
+
+Column-style Hermite normal form
 ================================
+
+=========
+Algorithm
+=========
+
 
 .. toctree::
    :maxdepth: 2
