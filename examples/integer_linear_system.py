@@ -6,6 +6,7 @@ from hsnf import column_style_hermite_normal_form
 def solve_integer_linear_system(A, b):
     H, R = column_style_hermite_normal_form(A)
     rank = np.count_nonzero(np.diagonal(H))
+    print(H)
 
     x_special = np.zeros(A.shape[1])
     x_special[:rank] = solve_triangular(H[:rank, :rank], b[:rank], lower=True)
