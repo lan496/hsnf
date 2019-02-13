@@ -1,6 +1,11 @@
 # Copyright (c) 2019 Kohei Shinohara
 # Distributed under the terms of the MIT License.
 import numpy as np
+from hsnf.utils import (
+    get_nonzero_min_abs_full,
+    get_nonzero_min_abs_row,
+    get_nonzero_min_abs_column
+)
 
 
 class ZmoduleHomomorphism:
@@ -120,12 +125,12 @@ class ZmoduleHomomorphism:
             return self._A, self._basis_from, self._basis_to
 
         # choose a pivot
-        col, row = self._get_min_abs(s)
+        row, col = get_nonzero_min_abs_full(self._A, s)
         if col is None:
             # if there does not remain non-zero elements, this procesure ends.
             return self._A, self._basis_from, self._basis_to
-        self._swap_from(s, col)
-        self._swap_to(s, row)
+        self._swap_from(s, row)
+        self._swap_to(s, col)
 
         # eliminate the s-th column entries
         for i in range(s + 1, self.num_row):
@@ -180,78 +185,76 @@ class ZmoduleHomomorphism:
 
         return D, L, R
 
-    def _hnf_row(self, s):
+    def _hnf_row(self, si, sj):
         """
-        determine row-style HNF up to the s-th row and column elements
+        determine row-style HNF up to the si-th row and the sj-th column elements
         """
-        print('s={}'.format(s))
-        print(self._A)
-        print()
-        if s == min(self._A.shape):
+        if (si == self.num_row) or (sj == self.num_column):
             return self._A, self._basis_from
 
         # choose a pivot
-        row = self._get_min_abs(s, row_only=True)
+        row, _ = get_nonzero_min_abs_row(self._A, si, sj)
+
         if row is None:
             # if there does not remain non-zero elements, go to a next column
-            return self._hnf_row(s + 1)
-        self._swap_from(s, row)
+            return self._hnf_row(si, sj + 1)
+        self._swap_from(si, row)
 
         # eliminate the s-th column entries
-        for i in range(s + 1, self.num_row):
-            if self._A[i, s] != 0:
-                k = self._A[i, s] // self._A[s, s]
-                self._add_from(i, s, -k)
+        for i in range(si + 1, self.num_row):
+            if self._A[i, sj] != 0:
+                k = self._A[i, sj] // self._A[si, sj]
+                self._add_from(i, si, -k)
 
         # if there does not remain non-zero element in s-th row, find a next entry
-        if np.count_nonzero(self._A[(s + 1):, s]) == 0:
-            if self._A[s, s] < 0:
-                self._change_sign_from(s)
+        if np.count_nonzero(self._A[(si + 1):, sj]) == 0:
+            if self._A[si, sj] < 0:
+                self._change_sign_from(si)
 
-            if self._A[s, s] != 0:
-                for i in range(s):
-                    k = self._A[i, s] // self._A[s, s]
+            if self._A[si, sj] != 0:
+                for i in range(si):
+                    k = self._A[i, sj] // self._A[si, sj]
                     if k != 0:
-                        self._add_from(i, s, -k)
+                        self._add_from(i, si, -k)
 
-            return self._hnf_row(s + 1)
+            return self._hnf_row(si + 1, sj + 1)
         else:
-            return self._hnf_row(s)
+            return self._hnf_row(si, sj)
 
-    def _hnf_column(self, s):
+    def _hnf_column(self, si, sj):
         """
-        determine up to the s-th row and column elements
+        determine row-style HNF up to the si-th row and the sj-th column elements
         """
-        if s == min(self._A.shape):
-            return self._A, self._basis_to
+        if (si == self.num_row) or (sj == self.num_column):
+            return self._A, self._basis_from
 
         # choose a pivot
-        col = self._get_min_abs(s, column_only=True)
+        _, col = get_nonzero_min_abs_column(self._A, si, sj)
         if col is None:
             # if there does not remain non-zero elements, go to a next row
-            return self._hnf_column(s + 1)
-        self._swap_to(s, col)
+            return self._hnf_column(si + 1, sj)
+        self._swap_to(sj, col)
 
         # eliminate the s-th row entries
-        for j in range(s + 1, self.num_column):
-            if self._A[s, j] != 0:
-                k = self._A[s, j] // self._A[s, s]
-                self._add_to(j, s, -k)
+        for j in range(sj + 1, self.num_column):
+            if self._A[si, j] != 0:
+                k = self._A[si, j] // self._A[si, sj]
+                self._add_to(j, sj, -k)
 
         # if there does not remain non-zero element in s-th column, find a next entry
-        if np.count_nonzero(self._A[s, (s + 1):]) == 0:
-            if self._A[s, s] < 0:
-                self._change_sign_to(s)
+        if np.count_nonzero(self._A[si, (sj + 1):]) == 0:
+            if self._A[si, sj] < 0:
+                self._change_sign_to(sj)
 
-            if self._A[s, s] != 0:
-                for j in range(s):
-                    k = self._A[s, j] // self._A[s, s]
+            if self._A[si, sj] != 0:
+                for j in range(sj):
+                    k = self._A[si, j] // self._A[si, sj]
                     if k != 0:
-                        self._add_to(j, s, -k)
+                        self._add_to(j, sj, -k)
 
-            return self._hnf_column(s + 1)
+            return self._hnf_column(si + 1, sj + 1)
         else:
-            return self._hnf_column(s)
+            return self._hnf_column(si, sj)
 
     def hermite_normal_form(self, style='row'):
         """
@@ -280,9 +283,9 @@ class ZmoduleHomomorphism:
         basis_to = self._basis_to.copy()
 
         if style == 'row':
-            H, L = self._hnf_row(s=0)
+            H, L = self._hnf_row(si=0, sj=0)
         elif style == 'column':
-            H, R = self._hnf_column(s=0)
+            H, R = self._hnf_column(si=0, sj=0)
         else:
             raise ValueError('unknown hermite normal form style')
 
@@ -378,5 +381,6 @@ def column_style_hermite_normal_form(M):
     R: array, (n, n)
         unimodular matrix s.t. H = np.dot(M, R)
     """
-    zmh = ZmoduleHomomorphism.with_standard_basis(M)
-    return zmh.hermite_normal_form(style='column')
+    zmh = ZmoduleHomomorphism.with_standard_basis(M.T)
+    H_T, R_T = zmh.hermite_normal_form(style='row')
+    return H_T.T, R_T.T
