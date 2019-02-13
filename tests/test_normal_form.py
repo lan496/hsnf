@@ -50,6 +50,57 @@ class TestNormalForm(unittest.TestCase):
                 H, R = column_style_hermite_normal_form(X[i])
                 self.verify_column_style_hnf(X[i], H, R)
 
+
+    @unittest.skip
+    def test_hnf_uniqueness(self):
+        A1 = np.array([
+            [3, 3, 1, 4],
+            [0, 1, 0, 0],
+            [0, 0, 19, 16],
+            [0, 0, 0, 3]
+        ])
+        H1_row_exp = np.array([
+            [3, 0, 1, 1],
+            [0, 1, 0, 0],
+            [0, 0, 19, 1],
+            [0, 0, 0, 3]
+        ])
+        H1_row_act, _ = row_style_hermite_normal_form(A1)
+        self.assertTrue(np.allclose(H1_row_act, H1_row_exp))
+
+        A2 = np.array([
+            [0, 0, 5, 0, 1, 4],
+            [0, 0, 0, -1, -4, 99],
+            [0, 0, 0, 20, 19, 16],
+            [0, 0, 0, 0, 2, 1],
+            [0, 0, 0, 0, 0, 3],
+            [0, 0, 0, 0, 0, 0]
+        ])
+        H2_row_exp = np.array([
+            [0, 0, 5, 0, 0, 0],
+            [0, 0, 0, 1, 0, 0],
+            [0, 0, 0, 0, 1, 0],
+            [0, 0, 0, 0, 0, 1],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0]
+        ])
+        H2_row_act, _ = row_style_hermite_normal_form(A2)
+        print(H2_row_act)
+        self.assertTrue(np.allclose(H2_row_act, H2_row_exp))
+
+        A3 = np.array([
+            [2, 3, 6, 2],
+            [5, 6, 1, 6],
+            [8, 3, 1, 1]
+        ])
+        H3_row_exp = np.array([
+            [1, 0, 50, -11],
+            [0, 3, 28, -2],
+            [0, 0, 61, -13]
+        ])
+        H3_row_act, _ = row_style_hermite_normal_form(A3)
+        self.assertTrue(np.allclose(H3_row_act, H3_row_exp))
+
     def verify_snf(self, M, D, L, R):
         D_re = np.dot(L, np.dot(M, R))
         self.assertTrue(np.array_equal(D_re, D))
@@ -69,19 +120,22 @@ class TestNormalForm(unittest.TestCase):
 
         self.assertTrue(np.array_equal(H_re, H))
         self.assertTrue(np.allclose(H, np.triu(H)))
-        # self.assertTrue(np.min(H) >= 0)
-        # self.assertTrue(np.allclose(np.max(H, axis=1), np.diagonal(H)))
+        for s in range(min(H.shape)):
+            self.assertTrue(H[s, s] >= 0)
+            if (s + 1 < H.shape[0]) and (H[s, s] > 0):
+                self.assertTrue(np.max(H[(s + 1):, s]) < H[s, s])
 
         self.is_unimodular(L)
 
     def verify_column_style_hnf(self, M, H, R):
         H_re = np.dot(M, R)
 
-        print(H)
         self.assertTrue(np.array_equal(H_re, H))
         self.assertTrue(np.allclose(H, np.tril(H)))
-        self.assertTrue(np.min(H) >= 0)
-        self.assertTrue(np.allclose(np.max(H, axis=1), np.diagonal(H)))
+        for s in range(min(H.shape)):
+            self.assertTrue(H[s, s] >= 0)
+            if (s > 0) and (H[s, s] > 0):
+                self.assertTrue(np.max(H[s, :s]) < H[s, s])
 
         self.is_unimodular(R)
 

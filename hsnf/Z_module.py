@@ -4,7 +4,6 @@ import numpy as np
 from hsnf.utils import (
     get_nonzero_min_abs_full,
     get_nonzero_min_abs_row,
-    get_nonzero_min_abs_column
 )
 
 
@@ -63,38 +62,6 @@ class ZmoduleHomomorphism:
         """
         self._basis_to[:, axis1] += self._basis_to[:, axis2] * k
         self._A[:, axis1] += self._A[:, axis2] * k
-
-    def _get_min_abs(self, s, row_only=False, column_only=False):
-        """
-        return argmin_{i, j} abs(A[i, j]) s.t. (i >= s and j >= s and A[i, j] != 0)
-        if failed, return None
-        """
-        if (not row_only) and (not column_only):
-            ret = (None, None)
-            valmin = np.max(np.abs(self._A[s:, s:]))
-            for i in range(s, self.num_row):
-                for j in range(s, self.num_column):
-                    if (self._A[i, j] != 0) and abs(self._A[i, j]) <= valmin:
-                        ret = i, j
-                        valmin = abs(self._A[i, j])
-        elif row_only and (not column_only):
-            ret = None
-            valmin = np.max(np.abs(self._A[s:, s]))
-            for i in range(s, self.num_row):
-                if (self._A[i, s] != 0) and abs(self._A[i, s]) <= valmin:
-                    ret = i
-                    valmin = abs(self._A[i, s])
-        elif (not row_only) and column_only:
-            ret = None
-            valmin = np.max(np.abs(self._A[s, s:]))
-            for j in range(s, self.num_column):
-                if (self._A[s, j] != 0) and abs(self._A[s, j]) <= valmin:
-                    ret = j
-                    valmin = abs(self._A[s, j])
-        else:
-            raise ValueError('invalid parameters')
-
-        return ret
 
     def _is_lone(self, s):
         """
@@ -221,83 +188,29 @@ class ZmoduleHomomorphism:
         else:
             return self._hnf_row(si, sj)
 
-    def _hnf_column(self, si, sj):
-        """
-        determine row-style HNF up to the si-th row and the sj-th column elements
-        """
-        if (si == self.num_row) or (sj == self.num_column):
-            return self._A, self._basis_from
-
-        # choose a pivot
-        _, col = get_nonzero_min_abs_column(self._A, si, sj)
-        if col is None:
-            # if there does not remain non-zero elements, go to a next row
-            return self._hnf_column(si + 1, sj)
-        self._swap_to(sj, col)
-
-        # eliminate the s-th row entries
-        for j in range(sj + 1, self.num_column):
-            if self._A[si, j] != 0:
-                k = self._A[si, j] // self._A[si, sj]
-                self._add_to(j, sj, -k)
-
-        # if there does not remain non-zero element in s-th column, find a next entry
-        if np.count_nonzero(self._A[si, (sj + 1):]) == 0:
-            if self._A[si, sj] < 0:
-                self._change_sign_to(sj)
-
-            if self._A[si, sj] != 0:
-                for j in range(sj):
-                    k = self._A[si, j] // self._A[si, sj]
-                    if k != 0:
-                        self._add_to(j, sj, -k)
-
-            return self._hnf_column(si + 1, sj + 1)
-        else:
-            return self._hnf_column(si, sj)
-
-    def hermite_normal_form(self, style='row'):
+    def hermite_normal_form(self):
         """
         calculate row-style Hermite normal form
 
-        Parameters
-        ----------
-        style: str, 'row' or 'column'
-
         Returns
         -------
-        if style == 'row'
-            H: array, (m, n)
-                Hermite normal form of M, upper-triangular integer matrix
-            L: array, (m, m)
-                unimodular matrix s.t. H = np.dot(L, M)
-
-        if style == 'column'
-            H: array, (m, n)
-                Hermite normal form of M, lower-triangular integer matrix
-            R: array, (n, n)
-                unimodular matrix s.t. H = np.dot(M, R)
+        H: array, (m, n)
+            Hermite normal form of M, upper-triangular integer matrix
+        L: array, (m, m)
+            unimodular matrix s.t. H = np.dot(L, M)
         """
         A = self._A.copy()
         basis_from = self._basis_from.copy()
         basis_to = self._basis_to.copy()
 
-        if style == 'row':
-            H, L = self._hnf_row(si=0, sj=0)
-        elif style == 'column':
-            H, R = self._hnf_column(si=0, sj=0)
-        else:
-            raise ValueError('unknown hermite normal form style')
+        H, L = self._hnf_row(si=0, sj=0)
 
         # revert A, basis_from, and basis_to
         self._A = A
         self._basis_from = basis_from
         self._basis_to = basis_to
 
-        if style == 'row':
-            return H, L
-        elif style == 'column':
-            return H, R
+        return H, L
 
     @classmethod
     def _standard_basis(cls, n):
@@ -362,7 +275,7 @@ def row_style_hermite_normal_form(M):
         unimodular matrix s.t. H = np.dot(L, M)
     """
     zmh = ZmoduleHomomorphism.with_standard_basis(M)
-    return zmh.hermite_normal_form(style='row')
+    return zmh.hermite_normal_form()
 
 
 def column_style_hermite_normal_form(M):
@@ -382,5 +295,7 @@ def column_style_hermite_normal_form(M):
         unimodular matrix s.t. H = np.dot(M, R)
     """
     zmh = ZmoduleHomomorphism.with_standard_basis(M.T)
-    H_T, R_T = zmh.hermite_normal_form(style='row')
-    return H_T.T, R_T.T
+    H_T, R_T = zmh.hermite_normal_form()
+    H = H_T.T
+    R = R_T.T
+    return H, R
