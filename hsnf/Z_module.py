@@ -73,19 +73,19 @@ class ZmoduleHomomorphism:
                         ret = i, j
                         valmin = abs(self._A[i, j])
         elif row_only and (not column_only):
-            ret = s
-            valmin = np.max(np.abs(self._A[s:, s])) + 1
+            ret = None
+            valmin = np.max(np.abs(self._A[s:, s]))
             for i in range(s, self.num_row):
-                if (self._A[i, s] != 0) and abs(self._A[i, s]) < valmin:
+                if (self._A[i, s] != 0) and abs(self._A[i, s]) <= valmin:
                     ret = i
                     valmin = abs(self._A[i, s])
         elif (not row_only) and column_only:
-            ret = s
-            valmin = np.max(np.abs(self._A[s, s:])) + 1
-            for i in range(s, self.num_column):
-                if (self._A[s, i] != 0) and abs(self._A[s, i]) < valmin:
-                    ret = i
-                    valmin = abs(self._A[s, i])
+            ret = None
+            valmin = np.max(np.abs(self._A[s, s:]))
+            for j in range(s, self.num_column):
+                if (self._A[s, j] != 0) and abs(self._A[s, j]) <= valmin:
+                    ret = j
+                    valmin = abs(self._A[s, j])
         else:
             raise ValueError('invalid parameters')
 
@@ -184,14 +184,17 @@ class ZmoduleHomomorphism:
         """
         determine row-style HNF up to the s-th row and column elements
         """
+        print('s={}'.format(s))
+        print(self._A)
+        print()
         if s == min(self._A.shape):
             return self._A, self._basis_from
 
         # choose a pivot
         row = self._get_min_abs(s, row_only=True)
         if row is None:
-            # if there does not remain non-zero elements, this procesure ends.
-            return self._A, self._basis_from
+            # if there does not remain non-zero elements, go to a next column
+            return self._hnf_row(s + 1)
         self._swap_from(s, row)
 
         # eliminate the s-th column entries
@@ -201,17 +204,15 @@ class ZmoduleHomomorphism:
                 self._add_from(i, s, -k)
 
         # if there does not remain non-zero element in s-th row, find a next entry
-        if np.nonzero(self._A[(s + 1):, s])[0].size == 0:
+        if np.count_nonzero(self._A[(s + 1):, s]) == 0:
             if self._A[s, s] < 0:
                 self._change_sign_from(s)
 
-            """
             if self._A[s, s] != 0:
                 for i in range(s):
                     k = self._A[i, s] // self._A[s, s]
                     if k != 0:
-                        self._add_to(i, s, -k)
-            """
+                        self._add_from(i, s, -k)
 
             return self._hnf_row(s + 1)
         else:
@@ -227,8 +228,8 @@ class ZmoduleHomomorphism:
         # choose a pivot
         col = self._get_min_abs(s, column_only=True)
         if col is None:
-            # if there does not remain non-zero elements, this procesure ends.
-            return self._A, self._basis_to
+            # if there does not remain non-zero elements, go to a next row
+            return self._hnf_column(s + 1)
         self._swap_to(s, col)
 
         # eliminate the s-th row entries
@@ -238,17 +239,15 @@ class ZmoduleHomomorphism:
                 self._add_to(j, s, -k)
 
         # if there does not remain non-zero element in s-th column, find a next entry
-        if np.nonzero(self._A[s, (s + 1):])[0].size == 0:
+        if np.count_nonzero(self._A[s, (s + 1):]) == 0:
             if self._A[s, s] < 0:
                 self._change_sign_to(s)
 
-            """
             if self._A[s, s] != 0:
                 for j in range(s):
                     k = self._A[s, j] // self._A[s, s]
                     if k != 0:
                         self._add_to(j, s, -k)
-            """
 
             return self._hnf_column(s + 1)
         else:
