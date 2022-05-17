@@ -1,10 +1,8 @@
 # Copyright (c) 2019 Kohei Shinohara
 # Distributed under the terms of the MIT License.
 import numpy as np
-from hsnf.utils import (
-    get_nonzero_min_abs_full,
-    get_nonzero_min_abs_row,
-)
+
+from hsnf.utils import get_nonzero_min_abs_full, get_nonzero_min_abs_row
 
 
 class ZmoduleHomomorphism:
@@ -20,6 +18,7 @@ class ZmoduleHomomorphism:
     basis_to: array, (n, )
         basis of Z^n
     """
+
     def __init__(self, A, basis_from, basis_to):
         self._A = A
         self._basis_from = basis_from
@@ -67,9 +66,9 @@ class ZmoduleHomomorphism:
         """
         check if all s-th row elements column elements become zero
         """
-        if np.nonzero(self._A[s, (s + 1):])[0].size != 0:
+        if np.nonzero(self._A[s, (s + 1) :])[0].size != 0:
             return False
-        if np.nonzero(self._A[(s + 1):, s])[0].size != 0:
+        if np.nonzero(self._A[(s + 1) :, s])[0].size != 0:
             return False
         return True
 
@@ -174,7 +173,7 @@ class ZmoduleHomomorphism:
                 self._add_from(i, si, -k)
 
         # if there does not remain non-zero element in s-th row, find a next entry
-        if np.count_nonzero(self._A[(si + 1):, sj]) == 0:
+        if np.count_nonzero(self._A[(si + 1) :, sj]) == 0:
             if self._A[si, sj] < 0:
                 self._change_sign_from(si)
 

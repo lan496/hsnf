@@ -1,6 +1,6 @@
-from hsnf.Z_module import smith_normal_form
-
 import numpy as np
+
+from hsnf.Z_module import smith_normal_form
 
 
 def solve_frobenius_congruent(A, b=None, denominator=1000000):

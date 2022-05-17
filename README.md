@@ -1,8 +1,5 @@
 # hsnf
-![Build Status](https://travis-ci.com/lan496/hsnf.svg?branch=master)
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
-
-(develop: ![Build Status](https://travis-ci.com/lan496/hsnf.svg?branch=develop))
 
 Computing Hermite normal form and Smith normal form with transformation matrices.
 
