@@ -72,6 +72,9 @@ def compute_intersection(lattice1: NDArray, lattice2: NDArray, row_wise: bool = 
     d1 = np.around(compute_dual(l1) * denom).astype(int)
     d2 = np.around(compute_dual(l2) * denom).astype(int)
     dunion = compute_union(d1, d2)
-    intersection = np.around(compute_dual(dunion) * denom).astype(int)
+    ret = np.around(compute_dual(dunion) * denom).astype(int)
 
-    return intersection
+    if not row_wise:
+        ret = ret.T
+
+    return ret
