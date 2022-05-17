@@ -1,17 +1,53 @@
+from typing import Optional
+
 import numpy as np
+from numpy.typing import NDArray
+from scipy.linalg import solve_triangular
 
-from hsnf.Z_module import smith_normal_form
+from hsnf import column_style_hermite_normal_form, smith_normal_form
 
 
-def solve_frobenius_congruent(A, b=None, denominator=1000000):
+def solve_integer_linear_system(A: NDArray, b: NDArray):
     """
-    solve Ax=b (mod Z^n)
+    Solve Ax = b for x in Z^n
 
     Parameters
     ----------
-    A: array, (m, n)
-    b: (Optional) array, (m, )
-    denominator: (Optional), int
+    A: (m, n)
+    b: (m, )
+
+    Returns
+    -------
+    basis: (rank, n)
+    x_special: (n, )
+
+    General solutions are written as
+        x = x_special + (Z * basis[0] + ...)
+    If no solution exists, just return None.
+    """
+    H, R = column_style_hermite_normal_form(A)
+    rank = np.count_nonzero(np.diagonal(H))
+
+    x_special = np.zeros(A.shape[1])
+    x_special[:rank] = solve_triangular(H[:rank, :rank], b[:rank], lower=True)
+    if not np.allclose(x_special, np.around(x_special)):
+        return None
+    x_special = np.dot(R, x_special)
+
+    basis = R[:, :rank].T
+
+    return basis, x_special
+
+
+def solve_frobenius_congruent(A: NDArray, b: Optional[NDArray] = None, denominator: int = 1000000):
+    """
+    Solve Ax=b (mod Z) for x in R^n
+
+    Parameters
+    ----------
+    A: (m, n)
+    b: (Optional) (m, )
+    denominator: (Optional) if specified, taking modulus as fraction with up to specified denominator
 
     Returns
     -------
@@ -51,7 +87,7 @@ def solve_frobenius_congruent(A, b=None, denominator=1000000):
         return basis_Z, basis_R, x_special
 
 
-def remainder1_with_denominator(arr, denominator):
+def remainder1_with_denominator(arr: NDArray, denominator: int) -> NDArray:
     """
     return arr (mod 1)
     """

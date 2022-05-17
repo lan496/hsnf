@@ -23,7 +23,7 @@ VERSION = None
 
 
 # What packages are required for this module to be executed?
-REQUIRED = ["setuptools", "wheel", "numpy"]
+REQUIRED = ["setuptools", "wheel", "numpy", "scipy"]
 
 # What packages are optional?
 EXTRAS = {

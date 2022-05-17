@@ -90,17 +90,21 @@ def verify_column_style_hnf(M, H, R):
 
 
 def test_hnf_small():
-    A = np.array([
-        [2, 3, 6, 2],
-        [5, 6, 1, 6],
-        [8, 3, 1, 1],
-    ])
+    A = np.array(
+        [
+            [2, 3, 6, 2],
+            [5, 6, 1, 6],
+            [8, 3, 1, 1],
+        ]
+    )
     H, L = row_style_hermite_normal_form(A)
-    H_expect = np.array([
-        [1, 0, 50, -11],
-        [0, 3, 28, -2],
-        [0, 0, 61, -13],
-    ])
+    H_expect = np.array(
+        [
+            [1, 0, 50, -11],
+            [0, 3, 28, -2],
+            [0, 0, 61, -13],
+        ]
+    )
     assert np.allclose(H, H_expect)
     verify_row_style_hnf(A, H, L)
 
