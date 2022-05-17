@@ -41,3 +41,17 @@ def get_nonzero_min_abs_column(A, i1, j1):
     if failed, return (None, None)
     """
     return get_nonzero_min_abs(A, i1, i1 + 1, j1, A.shape[1])
+
+
+def extgcd(a, b):
+    """
+    Extended Euclidean algorithm for ax + by = gcd(a, b)
+    Return (gcd(a, b), x, y)
+    """
+    if b == 0:
+        return (a, 1, 0)
+    else:
+        g, xx, yy = extgcd(b, a % b)
+        x = yy
+        y = xx - yy * (a // b)
+        return (g, x, y)
