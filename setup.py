@@ -27,7 +27,6 @@ REQUIRED = ["setuptools", "wheel", "numpy", "scipy"]
 
 # What packages are optional?
 EXTRAS = {
-    # 'fancy feature': ['django'],
     "dev": [
         "pytest",
         "pre-commit",
@@ -35,7 +34,11 @@ EXTRAS = {
         "mypy",
         "flake8",
         "pyupgrade",
-    ]
+    ],
+    "docs": [
+        "shpinx",
+        "furo",
+    ],
 }
 
 # The rest you shouldn't have to touch too much :)
@@ -124,10 +127,17 @@ setup(
     classifiers=[
         # Trove classifiers
         # Full list: https://pypi.python.org/pypi?%3Aaction=list_classifiers
+        "Development Status :: 2 - Pre-Alpha",
+        "Intended Audience :: Science/Research",
         "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
         "Programming Language :: Python",
-        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: Implementation :: PyPy",
+        "Topic :: Scientific/Engineering :: Mathematics",
     ],
     # $ setup.py publish support.
     cmdclass={
