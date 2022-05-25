@@ -38,6 +38,7 @@ EXTRAS = {
     "docs": [
         "sphinx",
         "furo",
+        "m2r2",
     ],
 }
 
