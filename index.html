@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Definition" href="definition.html" />
 
     <meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
-        <title>hsnf documentation</title>
+        <title>hsnf 0.3.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -123,7 +123,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="#"><div class="brand">hsnf  documentation</div></a>
+      <a href="#"><div class="brand">hsnf 0.3.0 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -146,7 +146,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="#">
   
   
-  <span class="sidebar-brand-text">hsnf  documentation</span>
+  <span class="sidebar-brand-text">hsnf 0.3.0 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
@@ -154,7 +154,17 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  
+  <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="current">
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="definition.html">Definition</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a></li>
+</ul>
+
 </div>
 </div>
 
@@ -185,27 +195,44 @@
           </label>
         </div>
         <article role="main">
-          <section id="welcome-to-hsnf-s-documentation">
-<h1>Welcome to hsnf’s documentation!<a class="headerlink" href="#welcome-to-hsnf-s-documentation" title="Permalink to this headline">#</a></h1>
-</section>
-<section id="smith-normal-form">
-<h1>Smith normal form<a class="headerlink" href="#smith-normal-form" title="Permalink to this headline">#</a></h1>
-</section>
-<section id="row-style-hermite-normal-form">
-<h1>Row-style Hermite normal form<a class="headerlink" href="#row-style-hermite-normal-form" title="Permalink to this headline">#</a></h1>
-</section>
-<section id="column-style-hermite-normal-form">
-<h1>Column-style Hermite normal form<a class="headerlink" href="#column-style-hermite-normal-form" title="Permalink to this headline">#</a></h1>
-<div class="toctree-wrapper compound">
-</div>
-</section>
-<section id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">#</a></h1>
-<ul class="simple">
-<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
-<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
-<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+          <div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="definition.html">Definition</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="definition.html#smith-normal-form">Smith normal form</a></li>
+<li class="toctree-l2"><a class="reference internal" href="definition.html#row-style-hermite-normal-form">Row-style Hermite normal form</a></li>
+<li class="toctree-l2"><a class="reference internal" href="definition.html#column-style-hermite-normal-form">Column-style Hermite normal form</a></li>
 </ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a></li>
+</ul>
+</div>
+<section id="hsnf">
+<h1>hsnf<a class="headerlink" href="#hsnf" title="Permalink to this headline">#</a></h1>
+<a class="reference external image-reference" href="LICENSE"><img alt="MIT License" src="http://img.shields.io/badge/license-MIT-blue.svg?style=flat"/></a>
+<p>Computing Hermite normal form and Smith normal form with transformation matrices.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">#</a></h2>
+<p>See <a class="reference external" href="examples/basic.py">example/basic.py</a>.</p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="http://www.dlfer.xyz/post/2016-10-27-smith-normal-form/">http://www.dlfer.xyz/post/2016-10-27-smith-normal-form/</a></p>
+<ul>
+<li><p>I appreciate Dr. D. L. Ferrario’s instructive blog post and his approval for referring his scripts.</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://cseweb.ucsd.edu/classes/sp14/cse206A-a/index.html">CSE206A: Lattices Algorithms and Applications (Spring 2014)</a></p></li>
+</ul>
+</section>
 </section>
 
         </article>
@@ -213,7 +240,15 @@
       <footer>
         
         <div class="related-pages">
-          
+          <a class="next-page" href="definition.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Definition</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
           
         </div>
         <div class="bottom-of-page">
@@ -221,8 +256,7 @@
             <div class="copyright">
                 Copyright &#169; 2022, Kohei Shinohara
             </div>
-            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
-            
+            Made with 
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             
           </div>
@@ -247,11 +281,11 @@
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Welcome to hsnf’s documentation!</a></li>
-<li><a class="reference internal" href="#smith-normal-form">Smith normal form</a></li>
-<li><a class="reference internal" href="#row-style-hermite-normal-form">Row-style Hermite normal form</a></li>
-<li><a class="reference internal" href="#column-style-hermite-normal-form">Column-style Hermite normal form</a></li>
-<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+<li><a class="reference internal" href="#">hsnf</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
 </ul>
 
           </div>
