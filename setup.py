@@ -36,7 +36,7 @@ EXTRAS = {
         "pyupgrade",
     ],
     "docs": [
-        "shpinx",
+        "sphinx",
         "furo",
     ],
 }
