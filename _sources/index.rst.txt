@@ -1,12 +1,9 @@
 .. toctree::
-   :caption: Getting Started
+   :caption: Contents
+   :hidden:
 
    Introduction <self>
    Definition <definition>
-
-.. toctree::
-   :caption: Reference
-
    API <api>
    Change Log <changelog>
 
