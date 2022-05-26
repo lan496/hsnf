@@ -59,16 +59,6 @@ except FileNotFoundError:
     long_description = DESCRIPTION
 
 
-# https://github.com/pypa/setuptools_scm/
-def myversion():
-    from setuptools_scm.version import get_local_dirty_tag
-
-    def clean_scheme(version):
-        return get_local_dirty_tag(version) if version.dirty else "+clean"
-
-    return {"local_scheme": clean_scheme}
-
-
 class UploadCommand(Command):
     """Support setup.py upload."""
 
@@ -112,7 +102,7 @@ setup(
     description=DESCRIPTION,
     long_description=long_description,
     long_description_content_type="text/markdown",
-    use_scm_version=myversion,
+    use_scm_version=True,
     author=AUTHOR,
     author_email=EMAIL,
     python_requires=REQUIRES_PYTHON,
