@@ -9,7 +9,7 @@ Github: https://github.com/lan496/hsnf
 
 ```python
 import numpy as np
-from hsnf import column_style_hermite_normal_form, row_style_hermite_normal_form, smith_normal_form,
+from hsnf import column_style_hermite_normal_form, row_style_hermite_normal_form, smith_normal_form
 
 # Integer matrix to be decomposed
 M = np.array(
