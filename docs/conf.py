@@ -34,6 +34,7 @@ release = __version__
 # ones.
 extensions = [
     "sphinx.ext.autodoc",
+    # "sphinx_autodoc_typehints",
     "sphinx.ext.napoleon",
     "sphinx.ext.viewcode",
     "sphinx.ext.autosummary",
@@ -53,10 +54,13 @@ exclude_patterns = ["README.md"]
 source_suffix = [".rst", ".md"]
 
 autoclass_content = "both"
-# Show typehints as content of the function or method. The typehints of overloaded functions or methods will still be represented in the signature.
-autodoc_typehints = "description"
+autodoc_typehints = "signature"
 autodoc_member_order = "bysource"
 autodoc_type_aliases = {}
+
+# napoleon_type_aliases = {}
+napoleon_use_rtype = True
+napoleon_use_ivar = True
 
 
 # -- Options for HTML output -------------------------------------------------

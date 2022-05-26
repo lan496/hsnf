@@ -38,6 +38,7 @@ EXTRAS = {
     "docs": [
         "sphinx",
         "sphinx-autobuild",
+        # "sphinx-autodoc-typehints",
         "furo",
         "m2r2",
     ],
@@ -116,6 +117,9 @@ setup(
     python_requires=REQUIRES_PYTHON,
     url=URL,
     packages=find_packages(exclude=("tests",)),
+    package_data={
+        "hsnf": ["py.typed"],
+    },
     # If your package is a single module, use this instead of 'packages':
     # py_modules=['mypackage'],
     # entry_points={

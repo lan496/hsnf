@@ -1,29 +1,42 @@
 from typing import Optional
 
 import numpy as np
-from numpy.typing import NDArray
 from scipy.linalg import solve_triangular
 
 from hsnf import column_style_hermite_normal_form, smith_normal_form
+from hsnf.type import NDArrayInt
 
 
-def solve_integer_linear_system(A: NDArray, b: NDArray):
-    """
-    Solve Ax = b for x in Z^n
+def solve_integer_linear_system(A: NDArrayInt, b: NDArrayInt):
+    r"""
+    Solve integer linear system :math:`\mathbf{Ax} = \mathbf{b}` for :math:`\mathbf{x} \in \mathbb{Z}^{n}`.
+
+    Let the rank of :math:`\mathbf{A}` as :math:`r`.
+    General solutions are written as
+
+    .. math::
+        \{
+            \mathbf{x}_{\mathrm{special}} + \sum_{i=0}^{r-1} a_{i} \cdot \mathrm{basis[i]}
+            \mid
+            a_{i} \in \mathbb{Z}
+        \}.
+
+    If no solution exists, return None.
 
     Parameters
     ----------
-    A: (m, n)
-    b: (m, )
+    A: array, (m, n)
+        Integer coefficient matrix
+    b: array, (m, )
+        Integer offsets
 
     Returns
     -------
-    basis: (rank, n)
-    x_special: (n, )
+    basis: array, (rank, n)
+        ``basis[i, :]`` is a solution of :math:`\mathbf{Ax}=\mathbf{0}`
+    x_special: array, (n, )
+        Special solution :math:`\mathbf{x}_{\mathrm{special}}`
 
-    General solutions are written as
-        x = x_special + (Z * basis[0] + ...)
-    If no solution exists, just return None.
     """
     H, R = column_style_hermite_normal_form(A)
     rank = np.count_nonzero(np.diagonal(H))
@@ -39,24 +52,43 @@ def solve_integer_linear_system(A: NDArray, b: NDArray):
     return basis, x_special
 
 
-def solve_frobenius_congruent(A: NDArray, b: Optional[NDArray] = None, denominator: int = 1000000):
-    """
-    Solve Ax=b (mod Z) for x in R^n
+def solve_frobenius_congruent(
+    A: NDArrayInt, b: Optional[NDArrayInt] = None, denominator: int = 1000000
+):
+    r"""
+    Solve Frobenius congruent :math:`\mathbf{Ax} = \mathbf{b} \, (\mathrm{mod}\, \mathbb{Z})` for :math:`\mathbf{x} \in \mathbb{R}^{n}`.
+
+    Let the rank of :math:`\mathbf{A}` as :math:`r`.
+    General solutions are written as
+
+    .. math::
+        \{
+            \mathbf{x}_{\mathrm{special}}
+            + \sum_{i=0}^{r-1} a_{i} \cdot \mathrm{basis\_Z[i]}
+            + \sum_{j=0}^{n-r-1} c_{j} \cdot \mathrm{basis\_R[j]}
+            \mid
+            a_{i} \in \mathbb{Z}, c_{j} \in \mathbb{R}
+        \}.
+
+    If no solution exists, return None.
 
     Parameters
     ----------
-    A: (m, n)
-    b: (Optional) (m, )
-    denominator: (Optional) if specified, taking modulus as fraction with up to specified denominator
+    A: array, (m, n)
+        Integer coefficient matrix
+    b: (Optional) array, (m, )
+        Integer offsets
+    denominator:
+        (Optional) If specified, taking modulus as fraction with up to specified denominator
 
     Returns
     -------
     basis_Z: array, (rank, n)
+        ``basis_Z[i, :]`` is a solution of :math:`\mathbf{Ax}=\mathbf{0}`
     basis_R: array, (n - rank, n)
+        ``basis_R[i, :]`` is a solution of :math:`\mathbf{Ax}=\mathbf{0}`
     x_special: array, (n, )
-
-    general solution is written by
-        x = x_special + (Z times basis_Z[0] + ...) + (R times basis_R[0] + ...)
+        Special solution :math:`\mathbf{x}_{\mathrm{special}}`
     """
     D, P, Q = smith_normal_form(A)
     rank = np.count_nonzero(np.diagonal(D))
@@ -87,7 +119,7 @@ def solve_frobenius_congruent(A: NDArray, b: Optional[NDArray] = None, denominat
         return basis_Z, basis_R, x_special
 
 
-def remainder1_with_denominator(arr: NDArray, denominator: int) -> NDArray:
+def remainder1_with_denominator(arr: NDArrayInt, denominator: int) -> NDArrayInt:
     """
     return arr (mod 1)
     """

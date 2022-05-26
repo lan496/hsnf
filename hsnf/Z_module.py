@@ -1,7 +1,10 @@
 # Copyright (c) 2019 Kohei Shinohara
 # Distributed under the terms of the MIT License.
+from __future__ import annotations
+
 import numpy as np
 
+from hsnf.type import NDArrayInt
 from hsnf.utils import get_nonzero_min_abs_full, get_nonzero_min_abs_row
 
 
@@ -236,62 +239,66 @@ class ZmoduleHomomorphism:
         return cls(A, basis_from, basis_to)
 
 
-def smith_normal_form(M):
+def smith_normal_form(M: NDArrayInt) -> tuple[NDArrayInt, NDArrayInt, NDArrayInt]:
     """
-    calculate Smith normal form
+    Calculate Smith normal form of integer matrix `M`.
+    Returned matrices `(D, L, R)` satisfy ``D = np.dot(L, np.dot(M, R))``.
 
     Parameters
     ----------
     M: array, (m, n)
-        integer matrix
+        Integer matrix
 
     Returns
     -------
     D: array, (m, n)
+        Smith normal form of `M`
     L: array, (m, m)
+        Unimodular matrix
     R: array, (n, n)
-        D = np.dot(L, np.dot(M, R))
-        L, R are unimodular.
+        Unimodular matrix
     """
     zmh = ZmoduleHomomorphism.with_standard_basis(M)
     return zmh.smith_normal_form()
 
 
-def row_style_hermite_normal_form(M):
+def row_style_hermite_normal_form(M: NDArrayInt) -> tuple[NDArrayInt, NDArrayInt]:
     """
-    calculate row-style Hermite normal form
-    H = LM
+    Calculate row-style Hermite normal form of `M`.
+    Returned matrices `(H, L)` satisfy ``H = np.dot(L, M)``.
 
     Parameters
     ----------
     M: array, (m, n)
+        Integer matrix
 
     Returns
     -------
     H: array, (m, n)
         Hermite normal form of M, upper-triangular integer matrix
     L: array, (m, m)
-        unimodular matrix s.t. H = np.dot(L, M)
+        Unimodular matrix
     """
     zmh = ZmoduleHomomorphism.with_standard_basis(M)
     return zmh.hermite_normal_form()
 
 
-def column_style_hermite_normal_form(M):
+def column_style_hermite_normal_form(M: NDArrayInt) -> tuple[NDArrayInt, NDArrayInt]:
     """
-    calculate column-style Hermite normal form
-    H = MR
+    Calculate column-style Hermite normal form of `M`
+    Returned matrices `(H, R)` satisfy ``H = np.dot(M, R)``
 
     Parameters
     ----------
     M: array, (m, n)
+        Integer matrix
 
     Returns
     -------
     H: array, (m, n)
         Hermite normal form of M, lower-triangular integer matrix
     R: array, (n, n)
-        unimodular matrix s.t. H = np.dot(M, R)
+        Unimodular matrix
     """
     zmh = ZmoduleHomomorphism.with_standard_basis(M.T)
     H_T, R_T = zmh.hermite_normal_form()

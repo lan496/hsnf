@@ -1,5 +1,5 @@
-Definitions
-===========
+Definition
+==========
 
 Smith normal form
 -----------------
