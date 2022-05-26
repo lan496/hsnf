@@ -21,11 +21,12 @@ project = "hsnf"
 copyright = "2022, Kohei Shinohara"
 author = "Kohei Shinohara"
 
-from hsnf.__version__ import __version__
+# https://github.com/pypa/setuptools_scm/
+from importlib.metadata import version
 
-version = __version__
-release = __version__
-
+release = version("hsnf")
+# for example take major/minor
+version = ".".join(release.split(".")[:2])
 
 # -- General configuration ---------------------------------------------------
 

@@ -19,7 +19,6 @@ URL = "https://github.com/lan496/hsnf"
 AUTHOR = "Kohei Shinohara"
 EMAIL = ""
 REQUIRES_PYTHON = ">=3.7.0"
-VERSION = None
 
 
 # What packages are required for this module to be executed?
@@ -59,13 +58,15 @@ try:
 except FileNotFoundError:
     long_description = DESCRIPTION
 
-# Load the package's __version__.py module as a dictionary.
-about = {}  # type: ignore
-if not VERSION:
-    with open(os.path.join(here, NAME, "__version__.py")) as f:
-        exec(f.read(), about)
-else:
-    about["__version__"] = VERSION
+
+# https://github.com/pypa/setuptools_scm/
+def myversion():
+    from setuptools_scm.version import get_local_dirty_tag
+
+    def clean_scheme(version):
+        return get_local_dirty_tag(version) if version.dirty else "+clean"
+
+    return {"local_scheme": clean_scheme}
 
 
 class UploadCommand(Command):
@@ -98,9 +99,9 @@ class UploadCommand(Command):
         self.status("Uploading the package to PyPI via Twine…")
         os.system("twine upload dist/*")
 
-        self.status("Pushing git tags…")
-        os.system("git tag v{}".format(about["__version__"]))
-        os.system("git push --tags")
+        # self.status("Pushing git tags…")
+        # os.system("git tag v{}".format(about["__version__"]))
+        # os.system("git push --tags")
 
         sys.exit()
 
@@ -108,10 +109,10 @@ class UploadCommand(Command):
 # Where the magic happens:
 setup(
     name=NAME,
-    version=about["__version__"],
     description=DESCRIPTION,
     long_description=long_description,
     long_description_content_type="text/markdown",
+    use_scm_version=myversion,
     author=AUTHOR,
     author_email=EMAIL,
     python_requires=REQUIRES_PYTHON,
@@ -125,6 +126,7 @@ setup(
     # entry_points={
     #     'console_scripts': ['mycli=mymodule:cli'],
     # },
+    setup_requires=["setuptools_scm"],
     install_requires=REQUIRED,
     extras_require=EXTRAS,
     include_package_data=True,
