@@ -1,9 +1,15 @@
 # hsnf
+[![testing](https://github.com/lan496/hsnf/actions/workflows/testing.yml/badge.svg?branch=master)](https://github.com/lan496/hsnf/actions/workflows/testing.yml)
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/hsnf)
+[![PyPI version](https://badge.fury.io/py/hsnf.svg)](https://badge.fury.io/py/hsnf)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/hsnf)
+<!--![GitHub all releases](https://img.shields.io/github/downloads/lan496/hsnf/total) -->
 
 Computing Hermite normal form and Smith normal form with transformation matrices.
 
-Github: https://github.com/lan496/hsnf
+- Github: https://github.com/lan496/hsnf
+- PyPI: https://pypi.org/project/hsnf/
 
 ## Usage
 
@@ -57,8 +63,13 @@ assert np.around(np.abs(np.linalg.det(R))) == 1  # unimodular
 
 ## Installation
 
-hsnf works with Python3.7+ and can be installed as follows.
+hsnf works with Python3.7+ and can be installed via PyPI:
 
+```shell
+pip install hsnf
+```
+
+or in local:
 ```shell
 git clone git@github.com:lan496/hsnf.git
 cd hsnf
