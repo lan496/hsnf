@@ -4,7 +4,7 @@ import numpy as np
 from scipy.linalg import solve_triangular
 
 from hsnf import column_style_hermite_normal_form, smith_normal_form
-from hsnf.type import NDArrayInt
+from hsnf.utils import NDArrayInt, get_triangular_rank
 
 
 def solve_integer_linear_system(A: NDArrayInt, b: NDArrayInt):
@@ -39,7 +39,7 @@ def solve_integer_linear_system(A: NDArrayInt, b: NDArrayInt):
 
     """
     H, R = column_style_hermite_normal_form(A)
-    rank = np.count_nonzero(np.diagonal(H))
+    rank = get_triangular_rank(H)
 
     x_special = np.zeros(A.shape[1])
     x_special[:rank] = solve_triangular(H[:rank, :rank], b[:rank], lower=True)
@@ -91,7 +91,7 @@ def solve_frobenius_congruent(
         Special solution :math:`\mathbf{x}_{\mathrm{special}}`
     """
     D, P, Q = smith_normal_form(A)
-    rank = np.count_nonzero(np.diagonal(D))
+    rank = get_triangular_rank(D)
 
     D_pinv = np.zeros((Q.shape[1], rank))
     D_pinv[np.diag_indices(rank)] = 1 / D.diagonal()[:rank]

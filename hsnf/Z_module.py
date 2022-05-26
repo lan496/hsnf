@@ -4,8 +4,7 @@ from __future__ import annotations
 
 import numpy as np
 
-from hsnf.type import NDArrayInt
-from hsnf.utils import get_nonzero_min_abs_full, get_nonzero_min_abs_row
+from hsnf.utils import NDArrayInt, get_nonzero_min_abs_full, get_nonzero_min_abs_row
 
 
 class ZmoduleHomomorphism:

@@ -3,7 +3,7 @@ from math import gcd
 import numpy as np
 
 from hsnf import row_style_hermite_normal_form
-from hsnf.type import NDArrayInt
+from hsnf.utils import NDArrayInt, get_triangular_rank
 
 
 def to_row_wise(lattice, row_wise: bool):
@@ -63,7 +63,7 @@ def compute_union(lattice1: NDArrayInt, lattice2: NDArrayInt, row_wise: bool = T
     l2 = to_row_wise(lattice2, row_wise)
 
     H, _ = row_style_hermite_normal_form(np.concatenate([l1, l2], axis=0))
-    rank = np.count_nonzero(H.diagonal())
+    rank = get_triangular_rank(H)
 
     union = H[:rank, :]
 

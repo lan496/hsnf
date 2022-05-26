@@ -1,4 +1,9 @@
+from __future__ import annotations
+
 import numpy as np
+import numpy.typing as npt
+
+NDArrayInt = npt.NDArray[np.int_]
 
 
 def get_nonzero_min_abs(A, i1, i2, j1, j2):
@@ -55,3 +60,10 @@ def extgcd(a, b):
         x = yy
         y = xx - yy * (a // b)
         return (g, x, y)
+
+
+def get_triangular_rank(A):
+    """
+    Return rank of triangular integer matrix
+    """
+    return np.count_nonzero(np.diagonal(A))
