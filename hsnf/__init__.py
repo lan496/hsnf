@@ -6,4 +6,4 @@ from hsnf.Z_module import (  # noqa: F401
     smith_normal_form,
 )
 
-__version__ = get_version()
+__version__ = get_version(root="..", relative_to=__file__)

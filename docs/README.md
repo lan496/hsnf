@@ -12,3 +12,8 @@ sphinx-autobuild --host 0.0.0.0 docs docs_build
 git tag v0.3.1
 git push origin --tags
 ```
+
+Confirm the version number
+```shell
+python -m setuptools_scm
+```
