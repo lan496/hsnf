@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Integer matrix" href="api.core.html" /><link rel="prev" title="Definition" href="definition.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Lattice algorithm" href="api.lattice.html" /><link rel="prev" title="Integer matrix" href="api.core.html" />
 
     <meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
-        <title>API Reference - hsnf 0.3.0 documentation</title>
+        <title>Integer linear system - hsnf 0.3.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -158,9 +158,9 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="definition.html">Definition</a></li>
-<li class="toctree-l1 current has-children current-page"><a class="current reference internal" href="#">API Reference</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="api.html">API Reference</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="api.core.html">Integer matrix</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.integer_system.html">Integer linear system</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Integer linear system</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api.lattice.html">Lattice algorithm</a></li>
 </ul>
 </li>
@@ -198,15 +198,70 @@
           </label>
         </div>
         <article role="main">
-          <section id="api-reference">
-<h1>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this headline">#</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="api.core.html">Integer matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.integer_system.html">Integer linear system</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.lattice.html">Lattice algorithm</a></li>
+          <section id="integer-linear-system">
+<h1>Integer linear system<a class="headerlink" href="#integer-linear-system" title="Permalink to this headline">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="hsnf.integer_system.solve_integer_linear_system">
+<span class="sig-prename descclassname"><span class="pre">hsnf.integer_system.</span></span><span class="sig-name descname"><span class="pre">solve_integer_linear_system</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.int64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.int64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsnf/integer_system.html#solve_integer_linear_system"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsnf.integer_system.solve_integer_linear_system" title="Permalink to this definition">#</a></dt>
+<dd><p>Solve integer linear system <span class="math notranslate nohighlight">\(\mathbf{Ax} = \mathbf{b}\)</span> for <span class="math notranslate nohighlight">\(\mathbf{x} \in \mathbb{Z}^{n}\)</span>.</p>
+<p>Let the rank of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> as <span class="math notranslate nohighlight">\(r\)</span>.
+General solutions are written as</p>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\{
+    \mathbf{x}_{\mathrm{special}} + \sum_{i=0}^{r-1} a_{i} \cdot \mathrm{basis[i]}
+    \mid
+    a_{i} \in \mathbb{Z}
+\}.\]</div></div>
+<p>If no solution exists, return None.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A</strong> (<em>array</em><em>, </em><em>(</em><em>m</em><em>, </em><em>n</em><em>)</em>) – Integer coefficient matrix</p></li>
+<li><p><strong>b</strong> (<em>array</em><em>, </em><em>(</em><em>m</em><em>, </em><em>)</em>) – Integer offsets</p></li>
 </ul>
-</div>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>basis</strong> (<em>array, (rank, n)</em>) – <code class="docutils literal notranslate"><span class="pre">basis[i,</span> <span class="pre">:]</span></code> is a solution of <span class="math notranslate nohighlight">\(\mathbf{Ax}=\mathbf{0}\)</span></p></li>
+<li><p><strong>x_special</strong> (<em>array, (n, )</em>) – Special solution <span class="math notranslate nohighlight">\(\mathbf{x}_{\mathrm{special}}\)</span></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="hsnf.integer_system.solve_frobenius_congruent">
+<span class="sig-prename descclassname"><span class="pre">hsnf.integer_system.</span></span><span class="sig-name descname"><span class="pre">solve_frobenius_congruent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.int64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.int64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denominator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1000000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsnf/integer_system.html#solve_frobenius_congruent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsnf.integer_system.solve_frobenius_congruent" title="Permalink to this definition">#</a></dt>
+<dd><p>Solve Frobenius congruent <span class="math notranslate nohighlight">\(\mathbf{Ax} = \mathbf{b} \, (\mathrm{mod}\, \mathbb{Z})\)</span> for <span class="math notranslate nohighlight">\(\mathbf{x} \in \mathbb{R}^{n}\)</span>.</p>
+<p>Let the rank of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> as <span class="math notranslate nohighlight">\(r\)</span>.
+General solutions are written as</p>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\{
+    \mathbf{x}_{\mathrm{special}}
+    + \sum_{i=0}^{r-1} a_{i} \cdot \mathrm{basis\_Z[i]}
+    + \sum_{j=0}^{n-r-1} c_{j} \cdot \mathrm{basis\_R[j]}
+    \mid
+    a_{i} \in \mathbb{Z}, c_{j} \in \mathbb{R}
+\}.\]</div></div>
+<p>If no solution exists, return None.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A</strong> (<em>array</em><em>, </em><em>(</em><em>m</em><em>, </em><em>n</em><em>)</em>) – Integer coefficient matrix</p></li>
+<li><p><strong>b</strong> (<em>(</em><em>Optional</em><em>) </em><em>array</em><em>, </em><em>(</em><em>m</em><em>, </em><em>)</em>) – Integer offsets</p></li>
+<li><p><strong>denominator</strong> – (Optional) If specified, taking modulus as fraction with up to specified denominator</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>basis_Z</strong> (<em>array, (rank, n)</em>) – <code class="docutils literal notranslate"><span class="pre">basis_Z[i,</span> <span class="pre">:]</span></code> is a solution of <span class="math notranslate nohighlight">\(\mathbf{Ax}=\mathbf{0}\)</span></p></li>
+<li><p><strong>basis_R</strong> (<em>array, (n - rank, n)</em>) – <code class="docutils literal notranslate"><span class="pre">basis_R[i,</span> <span class="pre">:]</span></code> is a solution of <span class="math notranslate nohighlight">\(\mathbf{Ax}=\mathbf{0}\)</span></p></li>
+<li><p><strong>x_special</strong> (<em>array, (n, )</em>) – Special solution <span class="math notranslate nohighlight">\(\mathbf{x}_{\mathrm{special}}\)</span></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
 </section>
 
         </article>
@@ -214,23 +269,23 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="api.core.html">
+          <a class="next-page" href="api.lattice.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Integer matrix</div>
+                <div class="title">Lattice algorithm</div>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="definition.html">
+          <a class="prev-page" href="api.core.html">
               <svg><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Definition</div>
+                <div class="title">Integer matrix</div>
                 
               </div>
             </a>
@@ -264,5 +319,6 @@
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/scripts/furo.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     </body>
 </html>

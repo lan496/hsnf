@@ -158,8 +158,14 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">Introduction</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Definition</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="api.html">API Reference</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.core.html">Integer matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.integer_system.html">Integer linear system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.lattice.html">Lattice algorithm</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
 </ul>
 
 </div>
@@ -196,12 +202,51 @@
 <h1>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">#</a></h1>
 <section id="smith-normal-form">
 <h2>Smith normal form<a class="headerlink" href="#smith-normal-form" title="Permalink to this headline">#</a></h2>
+<p>Let <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> be <span class="math notranslate nohighlight">\(m \times n\)</span> integer matrix.
+There exist some unimodular matrices <span class="math notranslate nohighlight">\(\mathbf{L} \in \mathbb{Z}^{m \times m}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{R} \in \mathbb{Z}^{n \times n}\)</span> such that</p>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{D}
+:=
+\mathbf{LMR}
+=
+\begin{pmatrix}
+    d_{1}      &amp;        &amp; \mathbf{O}          &amp; \mathbf{0} \\
+               &amp; \ddots &amp;                     &amp; \vdots     \\
+    \mathbf{O} &amp;        &amp; d_{r}               &amp; \mathbf{0} \\
+    \mathbf{0} &amp; \cdots &amp; \mathbf{0} &amp; \mathbf{O}
+\end{pmatrix}\end{split}\]</div></div>
+<p>where <span class="math notranslate nohighlight">\(d_{i}\)</span> is positive integer and <span class="math notranslate nohighlight">\(d_{i+1}\)</span> devides <span class="math notranslate nohighlight">\(d_{i}\)</span>.
+Then <span class="math notranslate nohighlight">\(\mathbf{D}\)</span> is called Smith normal form.</p>
 </section>
 <section id="row-style-hermite-normal-form">
 <h2>Row-style Hermite normal form<a class="headerlink" href="#row-style-hermite-normal-form" title="Permalink to this headline">#</a></h2>
+<p>Let <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> be <span class="math notranslate nohighlight">\(m \times n\)</span> integer matrix.
+It has a row-style Hermite normal form <span class="math notranslate nohighlight">\(\mathbf{H}\)</span> if there exists a unimodular matrices <span class="math notranslate nohighlight">\(\mathbf{L} \in \mathbb{Z}^{m \times m}\)</span> such that <span class="math notranslate nohighlight">\(\mathbf{H}=\mathbf{LM}\)</span> satisfied the following conditions</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(H_{ij} \geq 0 \quad (1 \leq i \leq m, 1 \leq j \leq n)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(H_{ij} = 0 \quad (i &gt; j \, \wedge i &gt; r)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(H_{ij} &lt; H_{jj} \quad (i &lt; j, 1 \leq j \leq r)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(r = \mathrm{rank} \mathbf{A}\)</span></p></li>
+</ol>
+<p>If <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> is full rank, the Hermite normal form <span class="math notranslate nohighlight">\(\mathbf{H}\)</span> is uniquely determined.</p>
 </section>
 <section id="column-style-hermite-normal-form">
 <h2>Column-style Hermite normal form<a class="headerlink" href="#column-style-hermite-normal-form" title="Permalink to this headline">#</a></h2>
+<p>Let <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> be <span class="math notranslate nohighlight">\(m \times n\)</span> integer matrix.
+It has a column-style Hermite normal form <span class="math notranslate nohighlight">\(\mathbf{H}\)</span> if there exists a unimodular matrices <span class="math notranslate nohighlight">\(\mathbf{R} \in \mathbb{Z}^{n \times n}\)</span> such that <span class="math notranslate nohighlight">\(\mathbf{H}=\mathbf{MR}\)</span> satisfied the following conditions</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(H_{ij} \geq 0 \quad (1 \leq i \leq m, 1 \leq j \leq n)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(H_{ij} = 0 \quad (i &lt; j \, \wedge j &gt; r)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(H_{ij} &lt; H_{ii} \quad (i &gt; j, 1 \leq i \leq r)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(r = \mathrm{rank} \mathbf{A}\)</span></p></li>
+</ol>
+<p>If <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> is full rank, the Hermite normal form <span class="math notranslate nohighlight">\(\mathbf{H}\)</span> is uniquely determined.</p>
+</section>
+<section id="reference-japanese">
+<h2>Reference (Japanese)<a class="headerlink" href="#reference-japanese" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>伊理 正夫, 線形代数汎論 (朝倉出版, 2009)</p></li>
+</ul>
 </section>
 </section>
 
@@ -265,6 +310,7 @@
 <li><a class="reference internal" href="#smith-normal-form">Smith normal form</a></li>
 <li><a class="reference internal" href="#row-style-hermite-normal-form">Row-style Hermite normal form</a></li>
 <li><a class="reference internal" href="#column-style-hermite-normal-form">Column-style Hermite normal form</a></li>
+<li><a class="reference internal" href="#reference-japanese">Reference (Japanese)</a></li>
 </ul>
 </li>
 </ul>
@@ -281,5 +327,6 @@
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/scripts/furo.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     </body>
 </html>

@@ -153,11 +153,17 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="definition.html">Definition</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="api.html">API Reference</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.core.html">Integer matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.integer_system.html">Integer linear system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.lattice.html">Lattice algorithm</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Index</a></li>
 </ul>
 
 </div>
@@ -193,8 +199,62 @@
           
 <section class="genindex-section">
   <h1 id="index">Index</h1>
-  <div class="genindex-jumpbox"></div>
+  <div class="genindex-jumpbox"><a href="#C"><strong>C</strong></a> | <a href="#E"><strong>E</strong></a> | <a href="#R"><strong>R</strong></a> | <a href="#S"><strong>S</strong></a></div>
 </section>
+<section id="C" class="genindex-section">
+  <h2>C</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api.core.html#hsnf.column_style_hermite_normal_form">column_style_hermite_normal_form() (in module hsnf)</a>
+</li>
+        <li><a href="api.lattice.html#hsnf.lattice.compute_dual">compute_dual() (in module hsnf.lattice)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api.lattice.html#hsnf.lattice.compute_intersection">compute_intersection() (in module hsnf.lattice)</a>
+</li>
+        <li><a href="api.lattice.html#hsnf.lattice.compute_union">compute_union() (in module hsnf.lattice)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="E" class="genindex-section">
+  <h2>E</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api.lattice.html#hsnf.lattice.equivalent">equivalent() (in module hsnf.lattice)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="R" class="genindex-section">
+  <h2>R</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api.core.html#hsnf.row_style_hermite_normal_form">row_style_hermite_normal_form() (in module hsnf)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="S" class="genindex-section">
+  <h2>S</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api.core.html#hsnf.smith_normal_form">smith_normal_form() (in module hsnf)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api.integer_system.html#hsnf.integer_system.solve_frobenius_congruent">solve_frobenius_congruent() (in module hsnf.integer_system)</a>
+</li>
+        <li><a href="api.integer_system.html#hsnf.integer_system.solve_integer_linear_system">solve_integer_linear_system() (in module hsnf.integer_system)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
 
         </article>
       </div>

@@ -158,8 +158,14 @@
 <ul class="current">
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="definition.html">Definition</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="api.html">API Reference</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.core.html">Integer matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.integer_system.html">Integer linear system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.lattice.html">Lattice algorithm</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
 </ul>
 
 </div>
@@ -198,9 +204,65 @@
 <h1>hsnf<a class="headerlink" href="#hsnf" title="Permalink to this headline">#</a></h1>
 <a class="reference external image-reference" href="LICENSE"><img alt="MIT License" src="http://img.shields.io/badge/license-MIT-blue.svg?style=flat"/></a>
 <p>Computing Hermite normal form and Smith normal form with transformation matrices.</p>
+<p>Github: <a class="reference external" href="https://github.com/lan496/hsnf">https://github.com/lan496/hsnf</a></p>
 <section id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">#</a></h2>
-<p>See <a class="reference external" href="examples/basic.py">example/basic.py</a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">hsnf</span> <span class="kn">import</span> <span class="n">column_style_hermite_normal_form</span><span class="p">,</span> <span class="n">row_style_hermite_normal_form</span><span class="p">,</span> <span class="n">smith_normal_form</span><span class="p">,</span>
+
+<span class="c1"># Integer matrix to be decomposed</span>
+<span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="p">[</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">111</span><span class="p">,</span> <span class="o">-</span><span class="mi">36</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">672</span><span class="p">,</span> <span class="mi">210</span><span class="p">,</span> <span class="mi">74</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">255</span><span class="p">,</span> <span class="mi">81</span><span class="p">,</span> <span class="mi">24</span><span class="p">],</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># Smith normal form</span>
+<span class="n">D</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="n">smith_normal_form</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+<span class="sd">"""</span>
+<span class="sd">D = array([</span>
+<span class="sd">[   1    0    0    0]</span>
+<span class="sd">[   0    3    0    0]</span>
+<span class="sd">[   0    0 2079    0]])</span>
+<span class="sd">"""</span>
+<span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">L</span> <span class="o">@</span> <span class="n">M</span> <span class="o">@</span> <span class="n">R</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">L</span><span class="p">)))</span> <span class="o">==</span> <span class="mi">1</span>  <span class="c1"># unimodular</span>
+<span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">R</span><span class="p">)))</span> <span class="o">==</span> <span class="mi">1</span>  <span class="c1"># unimodular</span>
+
+<span class="c1"># Row-style hermite normal form</span>
+<span class="n">H</span><span class="p">,</span> <span class="n">L</span> <span class="o">=</span> <span class="n">row_style_hermite_normal_form</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+<span class="sd">"""</span>
+<span class="sd">H = array([</span>
+<span class="sd">[     1      0    420  -2522]</span>
+<span class="sd">[     0      3   1809 -10860]</span>
+<span class="sd">[     0      0   2079 -12474]])</span>
+<span class="sd">"""</span>
+<span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">L</span> <span class="o">@</span> <span class="n">M</span><span class="p">,</span> <span class="n">H</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">L</span><span class="p">)))</span> <span class="o">==</span> <span class="mi">1</span>  <span class="c1"># unimodular</span>
+
+<span class="c1"># Column-style hermite normal form</span>
+<span class="n">H</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="n">column_style_hermite_normal_form</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+<span class="sd">"""</span>
+<span class="sd">H = array([</span>
+<span class="sd">[   3    0    0    0]</span>
+<span class="sd">[   0    1    0    0]</span>
+<span class="sd">[1185  474 2079    0]])</span>
+<span class="sd">"""</span>
+<span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">R</span><span class="p">),</span> <span class="n">H</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">R</span><span class="p">)))</span> <span class="o">==</span> <span class="mi">1</span>  <span class="c1"># unimodular</span>
+</pre></div>
+</div>
+</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">#</a></h2>
+<p>hsnf works with Python3.7+ and can be installed as follows.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git clone git@github.com:lan496/hsnf.git
+<span class="nb">cd</span> hsnf
+pip install .
+</pre></div>
+</div>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
@@ -263,6 +325,7 @@
             <ul>
 <li><a class="reference internal" href="#">hsnf</a><ul>
 <li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#installation">Installation</a></li>
 <li><a class="reference internal" href="#references">References</a></li>
 </ul>
 </li>
