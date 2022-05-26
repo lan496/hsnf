@@ -47,10 +47,17 @@ templates_path = ["_templates"]
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = []
+exclude_patterns = ["README.md"]
 
 # The suffix(es) of source filenames.
 source_suffix = [".rst", ".md"]
+
+autoclass_content = "both"
+# Show typehints as content of the function or method. The typehints of overloaded functions or methods will still be represented in the signature.
+autodoc_typehints = "description"
+autodoc_member_order = "bysource"
+autodoc_type_aliases = {}
+
 
 # -- Options for HTML output -------------------------------------------------
 

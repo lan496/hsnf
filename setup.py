@@ -37,6 +37,7 @@ EXTRAS = {
     ],
     "docs": [
         "sphinx",
+        "sphinx-autobuild",
         "furo",
         "m2r2",
     ],

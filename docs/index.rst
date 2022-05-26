@@ -4,7 +4,8 @@
 
    Introduction <self>
    Definition <definition>
-   API <api>
+   API Reference <api>
    Change Log <changelog>
+   genindex
 
 .. mdinclude:: ../README.md
