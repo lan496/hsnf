@@ -17,3 +17,10 @@ Confirm the version number
 ```shell
 python -m setuptools_scm
 ```
+
+## Publish in PyPI
+
+```shell
+pip install twine
+python setup.py sdist bdist_wheel
+```

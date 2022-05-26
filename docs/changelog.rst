@@ -1,2 +1,9 @@
 Change Log
 ==========
+
+v0.3.3
+------
+Initial release with
+- Calculating Smith normal form and Hermite normal form
+- Solving integer linear system by using HNF
+- Basic lattice algorithm: union, intersection, and dual of lattices
