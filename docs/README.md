@@ -25,5 +25,5 @@ pip install twine
 python setup.py sdist bdist_wheel
 
 # Test PyPI
-python3 -m twine upload --repository testpypi dist/*
+python -m twine upload --repository testpypi dist/*
 ```
