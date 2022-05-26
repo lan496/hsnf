@@ -23,4 +23,7 @@ python -m setuptools_scm
 ```shell
 pip install twine
 python setup.py sdist bdist_wheel
+
+# Test PyPI
+python3 -m twine upload --repository testpypi dist/*
 ```
