@@ -1,7 +1,7 @@
 Change Log
 ==========
 
-v0.3.5
+v0.3.7
 ------
 Initial release with
 - Calculating Smith normal form and Hermite normal form

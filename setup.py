@@ -22,7 +22,7 @@ REQUIRES_PYTHON = ">=3.7.0"
 
 
 # What packages are required for this module to be executed?
-REQUIRED = ["setuptools", "setuptools_scm", "wheel", "numpy", "scipy"]
+REQUIRED = ["setuptools", "setuptools_scm", "wheel", "numpy>=1.20.1", "scipy"]
 
 # What packages are optional?
 EXTRAS = {
@@ -116,7 +116,7 @@ setup(
     #     'console_scripts': ['mycli=mymodule:cli'],
     # },
     # numpy: https://github.com/numpy/numpy/issues/2434
-    setup_requires=["setuptools_scm", "numpy>=1.20"],
+    setup_requires=["setuptools_scm", "numpy"],
     install_requires=REQUIRED,
     extras_require=EXTRAS,
     include_package_data=True,
