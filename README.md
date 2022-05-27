@@ -63,7 +63,7 @@ assert np.around(np.abs(np.linalg.det(R))) == 1  # unimodular
 
 ## Installation
 
-hsnf works with Python3.7+ and can be installed via PyPI:
+hsnf works with Python3.8+ and can be installed via PyPI:
 
 ```shell
 pip install hsnf

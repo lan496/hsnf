@@ -1,4 +1,4 @@
-from setuptools_scm import get_version
+from importlib.metadata import PackageNotFoundError, version
 
 from hsnf.Z_module import (  # noqa: F401
     column_style_hermite_normal_form,
@@ -6,4 +6,9 @@ from hsnf.Z_module import (  # noqa: F401
     smith_normal_form,
 )
 
-__version__ = get_version(root="..", relative_to=__file__)
+# https://github.com/pypa/setuptools_scm/#retrieving-package-version-at-runtime
+try:
+    __version__ = version("hsnf")
+except PackageNotFoundError:
+    # package is not installed
+    pass

@@ -18,7 +18,7 @@ DESCRIPTION = "Computing Hermite normal form and Smith normal form."
 URL = "https://github.com/lan496/hsnf"
 AUTHOR = "Kohei Shinohara"
 EMAIL = ""
-REQUIRES_PYTHON = ">=3.7.0"
+REQUIRES_PYTHON = ">=3.8.0"
 
 
 # What packages are required for this module to be executed?
@@ -130,7 +130,6 @@ setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
         "Programming Language :: Python",
-        "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
