@@ -1,9 +1,14 @@
 Change Log
 ==========
 
+v0.3.8
+------
+* Fix to enable to import ``__version__`` in PyPI package
+* Drop Python3.7 due to use ``importlib.metadata``
+
 v0.3.7
 ------
 Initial release with
-- Calculating Smith normal form and Hermite normal form
-- Solving integer linear system by using HNF
-- Basic lattice algorithm: union, intersection, and dual of lattices
+* Calculating Smith normal form and Hermite normal form
+* Solving integer linear system by using HNF
+* Basic lattice algorithm: union, intersection, and dual of lattices
