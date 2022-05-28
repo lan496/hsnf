@@ -1,9 +1,11 @@
 from __future__ import annotations
 
+from typing import TypeAlias
+
 import numpy as np
 import numpy.typing as npt
 
-NDArrayInt = npt.NDArray[np.int_]
+NDArrayInt: TypeAlias = npt.NDArray[np.int_]
 
 
 def get_nonzero_min_abs(A, i1, i2, j1, j2):
@@ -60,6 +62,50 @@ def extgcd(a, b):
         x = yy
         y = xx - yy * (a // b)
         return (g, x, y)
+
+
+def eratosthenes(n: int) -> dict[int, int]:
+    sieve = [1 for _ in range(n + 1)]
+    for d in range(2, n + 1):
+        if sieve[d] != 1:
+            continue
+        for i in range(1, n // d + 1):
+            sieve[d * i] = d
+
+    factors = {}  # type: ignore
+    while n > 1:
+        p = sieve[n]
+        n //= p
+        factors[p] = factors.get(p, 0) + 1
+
+    return factors
+
+
+def crt(b1: NDArrayInt, b2: NDArrayInt, m1: int, m2: int):
+    """
+    Solve Chinese remainder theorem
+        x mod m1 = b1
+        x mod m2 = b2
+    Return (r, lcm(m1, m2)) s.t. x mod lcm(m1, m2) == r
+    If no solution exists, return None.
+    """
+    g, x, y = extgcd(m1, m2)  # m1 * x + m2 * y == g
+    if not np.allclose(np.mod(b1 - b2, g), 0):
+        return None
+    lcm = m1 * m2 // g
+    tmp = np.mod(((b2 - b1) / g * x).astype(int), m2 // g)
+    r = np.mod(b1 + m1 * tmp, lcm)
+    return (r, lcm)
+
+
+def crt_on_list(offsets_and_modulo: list[tuple[NDArrayInt, int]]):
+    r, lcm = offsets_and_modulo[0]
+    for i in range(1, len(offsets_and_modulo)):
+        b1, m1 = offsets_and_modulo[i - 1]
+        b2, m2 = offsets_and_modulo[i]
+        r, lcm = crt(b1, b2, m1, m2)
+
+    return r, lcm
 
 
 def get_triangular_rank(A):
