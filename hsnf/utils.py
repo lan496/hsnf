@@ -1,9 +1,8 @@
 from __future__ import annotations
 
-from typing import TypeAlias
-
 import numpy as np
 import numpy.typing as npt
+from typing_extensions import TypeAlias  # for Python<3.10
 
 NDArrayInt: TypeAlias = npt.NDArray[np.int_]
 
