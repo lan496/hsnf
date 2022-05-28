@@ -22,7 +22,7 @@ REQUIRES_PYTHON = ">=3.8.0"
 
 
 # What packages are required for this module to be executed?
-REQUIRED = ["setuptools", "setuptools_scm", "wheel", "numpy>=1.20.1", "scipy", "type_extensions"]
+REQUIRED = ["setuptools", "setuptools_scm", "wheel", "numpy>=1.20.1", "scipy", "typing_extensions"]
 
 # What packages are optional?
 EXTRAS = {
