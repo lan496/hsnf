@@ -74,8 +74,13 @@ def compute_union(lattice1: NDArrayInt, lattice2: NDArrayInt, row_wise: bool = T
 
 
 def compute_dual(lattice, row_wise: bool = True):
-    """
+    r"""
     Return basis of a dual lattice.
+
+    For lattice :math:`L`, its dual lattice is
+
+    .. math::
+        \tilde{L} = \{ \mathbf{x} \in \mathrm{Span}_{\mathbb{R}}(L) \mid \langle \mathbf{x}, \mathbf{y} \rangle = 0 \, (\forall \mathbf{y} \in L) \}
 
     Parameters
     ----------
@@ -96,7 +101,7 @@ def compute_intersection(lattice1: NDArrayInt, lattice2: NDArrayInt, row_wise: b
     """
     Return intersection lattice of lattice1 and lattice2.
 
-    Let a dual of lattice :math:`L` be :math:`\tilde{L}`.
+    Let a dual of lattice :math:`L` be :math:`\\tilde{L}`.
     The dual of intersection of lattices :math:`L` and :math:`L'` is a union of dual lattices of :math:`L` and :math:`L'`:
 
     .. math::
