@@ -9,8 +9,7 @@ from hsnf.utils import NDArrayInt, get_triangular_rank
 
 def solve_integer_linear_system(A: NDArrayInt, b: NDArrayInt):
     r"""
-    Solve integer linear system :math:`\mathbf{Ax} = \mathbf{b}` for :math:`\mathbf{x} \in \mathbb{Z}^{n}`.
-
+    For given :math:`\mathbf{A} \in \mathbb{Z}^{m \times n}` and :math:`\mathbf{b} \in \mathbb{Z}^{m}`, solve integer linear system :math:`\mathbf{Ax} = \mathbf{b}` in :math:`\mathbf{x} \in \mathbb{Z}^{n}`.
     Let the rank of :math:`\mathbf{A}` as :math:`r`.
     General solutions are written as
 
@@ -56,8 +55,7 @@ def solve_frobenius_congruent(
     A: NDArrayInt, b: Optional[NDArrayInt] = None, denominator: int = 1000000
 ):
     r"""
-    Solve Frobenius congruent :math:`\mathbf{Ax} = \mathbf{b} \, (\mathrm{mod}\, \mathbb{Z})` for :math:`\mathbf{x} \in \mathbb{R}^{n}`.
-
+    For given :math:`\mathbf{A} \in \mathbb{Z}^{m \times n}` and :math:`\mathbf{b} \in \mathbb{Z}^{m}`, solve Frobenius congruent :math:`\mathbf{Ax} = \mathbf{b} \, (\mathrm{mod}\, \mathbb{R}/\mathbb{Z})` for :math:`\mathbf{x} \in \mathbb{R}^{n}`.
     Let the rank of :math:`\mathbf{A}` as :math:`r`.
     General solutions are written as
 
@@ -84,9 +82,9 @@ def solve_frobenius_congruent(
     Returns
     -------
     basis_Z: array, (rank, n)
-        ``basis_Z[i, :]`` is a solution of :math:`\mathbf{Ax}=\mathbf{0}`
+        ``basis_Z[i, :]`` is a solution of :math:`\mathbf{Ax}=\mathbf{0} \, (\mathrm{mod} \, \mathbb{Z})`
     basis_R: array, (n - rank, n)
-        ``basis_R[i, :]`` is a solution of :math:`\mathbf{Ax}=\mathbf{0}`
+        ``basis_R[i, :]`` is a solution of :math:`\mathbf{Ax}=\mathbf{0} \, (\mathrm{mod}\, \mathbb{R}/\mathbb{Z})`
     x_special: array, (n, )
         Special solution :math:`\mathbf{x}_{\mathrm{special}}`
     """
