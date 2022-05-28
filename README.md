@@ -1,5 +1,6 @@
 # hsnf
 [![testing](https://github.com/lan496/hsnf/actions/workflows/testing.yml/badge.svg?branch=master)](https://github.com/lan496/hsnf/actions/workflows/testing.yml)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/lan496/hsnf/master.svg)](https://results.pre-commit.ci/latest/github/lan496/hsnf/master)
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/hsnf)
 [![PyPI version](https://badge.fury.io/py/hsnf.svg)](https://badge.fury.io/py/hsnf)
