@@ -28,6 +28,7 @@ REQUIRED = ["setuptools", "setuptools_scm", "wheel", "numpy>=1.20.1", "scipy", "
 EXTRAS = {
     "dev": [
         "pytest",
+        "pytest-cov",
         "pre-commit",
         "black",
         "mypy",
