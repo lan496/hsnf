@@ -1,13 +1,13 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
 
-    <meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
-        <title>hsnf.integer_system - hsnf 0.3.14.dev6+ga139360 documentation</title>
+    <meta name="generator" content="sphinx-5.0.1, furo 2022.06.04.1"/>
+        <title>hsnf.integer_system - hsnf 0.3.14.dev7+g6fe9500 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     
     
@@ -122,7 +122,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../index.html"><div class="brand">hsnf 0.3.14.dev6+ga139360 documentation</div></a>
+      <a href="../../index.html"><div class="brand">hsnf 0.3.14.dev7+g6fe9500 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -145,7 +145,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
   
   
-  <span class="sidebar-brand-text">hsnf 0.3.14.dev6+ga139360 documentation</span>
+  <span class="sidebar-brand-text">hsnf 0.3.14.dev7+g6fe9500 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
   <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
@@ -183,7 +183,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -219,7 +220,7 @@
 
 
 <div class="viewcode-block" id="solve_integer_linear_system"><a class="viewcode-back" href="../../api.integer_system.html#hsnf.integer_system.solve_integer_linear_system">[docs]</a><span class="k">def</span> <span class="nf">solve_integer_linear_system</span><span class="p">(</span><span class="n">A</span><span class="p">:</span> <span class="n">NDArrayInt</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">NDArrayInt</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    For given :math:`\mathbf{A} \in \mathbb{Z}^{m \times n}` and :math:`\mathbf{b} \in \mathbb{Z}^{m}`, solve integer linear system :math:`\mathbf{Ax} = \mathbf{b}` in :math:`\mathbf{x} \in \mathbb{Z}^{n}`.</span>
 <span class="sd">    Let the rank of :math:`\mathbf{A}` as :math:`r`.</span>
 <span class="sd">    General solutions are written as</span>
@@ -247,7 +248,7 @@
 <span class="sd">    x_special: array, (n, )</span>
 <span class="sd">        Special solution :math:`\mathbf{x}_{\mathrm{special}}`</span>
 
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">H</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="n">column_style_hermite_normal_form</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
     <span class="n">rank</span> <span class="o">=</span> <span class="n">get_triangular_rank</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
 
@@ -265,7 +266,7 @@
 <div class="viewcode-block" id="solve_frobenius_congruent"><a class="viewcode-back" href="../../api.integer_system.html#hsnf.integer_system.solve_frobenius_congruent">[docs]</a><span class="k">def</span> <span class="nf">solve_frobenius_congruent</span><span class="p">(</span>
     <span class="n">A</span><span class="p">:</span> <span class="n">NDArrayInt</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">NDArrayInt</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">denominator</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1000000</span>
 <span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    For given :math:`\mathbf{A} \in \mathbb{Z}^{m \times n}` and :math:`\mathbf{b} \in \mathbb{Z}^{m}`, solve Frobenius congruent :math:`\mathbf{Ax} \equiv \mathbf{b} \, (\mathrm{mod}\, \mathbb{R}/\mathbb{Z})` for :math:`\mathbf{x} \in \mathbb{R}^{n}`.</span>
 <span class="sd">    Let the rank of :math:`\mathbf{A}` as :math:`r`.</span>
 <span class="sd">    General solutions are written as</span>
@@ -298,7 +299,7 @@
 <span class="sd">        ``basis_R[i, :]`` is a solution of :math:`\mathbf{Ax} \equiv \mathbf{0} \, (\mathrm{mod}\, \mathbb{R}/\mathbb{Z})`</span>
 <span class="sd">    x_special: array, (n, )</span>
 <span class="sd">        Special solution :math:`\mathbf{x}_{\mathrm{special}}`</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">D</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">Q</span> <span class="o">=</span> <span class="n">smith_normal_form</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
     <span class="n">rank</span> <span class="o">=</span> <span class="n">get_triangular_rank</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
 
@@ -329,7 +330,7 @@
 
 
 <div class="viewcode-block" id="solve_modular_integer_linear_system"><a class="viewcode-back" href="../../api.integer_system.html#hsnf.integer_system.solve_modular_integer_linear_system">[docs]</a><span class="k">def</span> <span class="nf">solve_modular_integer_linear_system</span><span class="p">(</span><span class="n">A</span><span class="p">:</span> <span class="n">NDArrayInt</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">NDArrayInt</span><span class="p">,</span> <span class="n">q</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    For given :math:`\mathbf{A} \in \mathbb{Z}^{m \times n}` and :math:`\mathbf{b} \in \mathbb{Z}^{m}`, solve modular integer linear system :math:`\mathbf{Ax} \equiv \mathbf{b} \, (\mathrm{mod} \, q)` in :math:`\mathbf{x} \in \mathbb{Z}^{n}`.</span>
 <span class="sd">    General solutions are written as</span>
 
@@ -357,7 +358,7 @@
 <span class="sd">        ``basis[i, :]`` is a solution of :math:`\mathbf{Ax} \equiv \mathbf{0} \, (\mathrm{mod} \, q)`</span>
 <span class="sd">    x_special: array, (n, )</span>
 <span class="sd">        Special solution :math:`\mathbf{x}_{\mathrm{special}}`</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">D</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="n">smith_normal_form</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
     <span class="n">rank</span> <span class="o">=</span> <span class="n">get_triangular_rank</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
     <span class="n">Lb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
@@ -375,7 +376,7 @@
 
 
 <span class="k">def</span> <span class="nf">_solve_modular_integer_linear_system_general</span><span class="p">(</span><span class="n">A</span><span class="p">:</span> <span class="n">NDArrayInt</span><span class="p">,</span> <span class="n">q</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
-    <span class="sd">"""</span>
+    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculate general solutions of Ax=0 (mod q)</span>
 
 <span class="sd">    Implementation Note</span>
@@ -390,7 +391,7 @@
 <span class="sd">    A base of Lambda_{q} can be taken as A[i, :] (i=1...m) and q I[j, :] (j=1...n)</span>
 
 <span class="sd">    Ref: https://cseweb.ucsd.edu/classes/wi12/cse206A-a/lec4.pdf</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">redundant_compliment</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">A</span><span class="p">,</span> <span class="n">q</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
     <span class="c1"># Choose independent vectors by HNF</span>
@@ -409,9 +410,9 @@
 
 
 <span class="k">def</span> <span class="nf">_solve_modular_integer_linear_system_special</span><span class="p">(</span><span class="n">D</span><span class="p">:</span> <span class="n">NDArrayInt</span><span class="p">,</span> <span class="n">Lb</span><span class="p">:</span> <span class="n">NDArrayInt</span><span class="p">,</span> <span class="n">q</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">rank</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
-    <span class="sd">"""</span>
+    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculate a special solution of Dy = Lb (mod q) where D is SNF.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">factors</span> <span class="o">=</span> <span class="n">eratosthenes</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
     <span class="n">specials</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">p</span><span class="p">,</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">factors</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -429,9 +430,9 @@
 <span class="k">def</span> <span class="nf">_solve_modular_integer_linear_system_special_prime_power</span><span class="p">(</span>
     <span class="n">D</span><span class="p">:</span> <span class="n">NDArrayInt</span><span class="p">,</span> <span class="n">Lb</span><span class="p">:</span> <span class="n">NDArrayInt</span><span class="p">,</span> <span class="n">prime_power</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">rank</span><span class="p">:</span> <span class="nb">int</span>
 <span class="p">):</span>
-    <span class="sd">"""</span>
+    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculate a special solution of Dy = Lb (mod p^l) where D is SNF and p is prime.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">D</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
     <span class="c1"># Solve D[i, i] * y[i] = Lb[i] (mod prime_power)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rank</span><span class="p">):</span>
@@ -445,9 +446,9 @@
 
 
 <span class="k">def</span> <span class="nf">remainder1_with_denominator</span><span class="p">(</span><span class="n">arr</span><span class="p">:</span> <span class="n">NDArrayInt</span><span class="p">,</span> <span class="n">denominator</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArrayInt</span><span class="p">:</span>
-    <span class="sd">"""</span>
+    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    return arr (mod 1)</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">arr_int</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">arr</span> <span class="o">*</span> <span class="n">denominator</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
     <span class="n">arr_int_mod</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">remainder</span><span class="p">(</span><span class="n">arr_int</span><span class="p">,</span> <span class="n">denominator</span><span class="p">)</span>
     <span class="n">arr_mod</span> <span class="o">=</span> <span class="n">arr_int_mod</span> <span class="o">/</span> <span class="n">denominator</span>
@@ -488,6 +489,7 @@
 </div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/scripts/furo.js"></script>
     </body>

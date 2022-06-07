@@ -1,13 +1,13 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
 
-    <meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
-        <title>hsnf.Z_module - hsnf 0.3.14.dev6+ga139360 documentation</title>
+    <meta name="generator" content="sphinx-5.0.1, furo 2022.06.04.1"/>
+        <title>hsnf.Z_module - hsnf 0.3.14.dev7+g6fe9500 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     
     
@@ -122,7 +122,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../index.html"><div class="brand">hsnf 0.3.14.dev6+ga139360 documentation</div></a>
+      <a href="../../index.html"><div class="brand">hsnf 0.3.14.dev7+g6fe9500 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -145,7 +145,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
   
   
-  <span class="sidebar-brand-text">hsnf 0.3.14.dev6+ga139360 documentation</span>
+  <span class="sidebar-brand-text">hsnf 0.3.14.dev7+g6fe9500 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
   <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
@@ -183,7 +183,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -208,7 +209,7 @@
 
 
 <span class="k">class</span> <span class="nc">ZmoduleHomomorphism</span><span class="p">:</span>
-    <span class="sd">"""</span>
+    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    homomorphism between Z-modules</span>
 
 <span class="sd">    Parameters</span>
@@ -219,7 +220,7 @@
 <span class="sd">        basis of Z^m</span>
 <span class="sd">    basis_to: array, (n, )</span>
 <span class="sd">        basis of Z^n</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">basis_from</span><span class="p">,</span> <span class="n">basis_to</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_A</span> <span class="o">=</span> <span class="n">A</span>
@@ -251,23 +252,23 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_A</span><span class="p">[:,</span> <span class="n">axis</span><span class="p">]</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
 
     <span class="k">def</span> <span class="nf">_add_from</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">axis1</span><span class="p">,</span> <span class="n">axis2</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
-        <span class="sd">"""</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        add k times axis2 to axis1</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_basis_from</span><span class="p">[</span><span class="n">axis1</span><span class="p">]</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_basis_from</span><span class="p">[</span><span class="n">axis2</span><span class="p">]</span> <span class="o">*</span> <span class="n">k</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_A</span><span class="p">[</span><span class="n">axis1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_A</span><span class="p">[</span><span class="n">axis2</span><span class="p">,</span> <span class="p">:]</span> <span class="o">*</span> <span class="n">k</span>
 
     <span class="k">def</span> <span class="nf">_add_to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">axis1</span><span class="p">,</span> <span class="n">axis2</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
-        <span class="sd">"""</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        add k times axis2 to axis1</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_basis_to</span><span class="p">[:,</span> <span class="n">axis1</span><span class="p">]</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_basis_to</span><span class="p">[:,</span> <span class="n">axis2</span><span class="p">]</span> <span class="o">*</span> <span class="n">k</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_A</span><span class="p">[:,</span> <span class="n">axis1</span><span class="p">]</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_A</span><span class="p">[:,</span> <span class="n">axis2</span><span class="p">]</span> <span class="o">*</span> <span class="n">k</span>
 
     <span class="k">def</span> <span class="nf">_is_lone</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
-        <span class="sd">"""</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        check if all s-th row elements column elements become zero</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_A</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="p">(</span><span class="n">s</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="p">:])[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">size</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">False</span>
         <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_A</span><span class="p">[(</span><span class="n">s</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="p">:,</span> <span class="n">s</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">size</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
@@ -275,10 +276,10 @@
         <span class="k">return</span> <span class="kc">True</span>
 
     <span class="k">def</span> <span class="nf">_get_nextentry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
-        <span class="sd">"""</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        return entry which is not diviable by A[s, s]</span>
 <span class="sd">        assume A[s, s] is not zero.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">s</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_row</span><span class="p">):</span>
             <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">s</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_column</span><span class="p">):</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">_A</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="n">s</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
@@ -286,9 +287,9 @@
         <span class="k">return</span> <span class="kc">None</span>
 
     <span class="k">def</span> <span class="nf">_snf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
-        <span class="sd">"""</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        determine SNF up to the s-th row and column elements</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">s</span> <span class="o">==</span> <span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_A</span><span class="o">.</span><span class="n">shape</span><span class="p">):</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_A</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_basis_from</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_basis_to</span>
 
@@ -326,7 +327,7 @@
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_snf</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">smith_normal_form</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">"""</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        calculate Smith normal form</span>
 
 <span class="sd">        see the following awesome post for a description of this algorithm:</span>
@@ -339,7 +340,7 @@
 <span class="sd">        R: array, (n, n)</span>
 <span class="sd">            D = np.dot(L, np.dot(M, R))</span>
 <span class="sd">            L, R are unimodular.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">A</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_A</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="n">basis_from</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_basis_from</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="n">basis_to</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_basis_to</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -354,9 +355,9 @@
         <span class="k">return</span> <span class="n">D</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">R</span>
 
     <span class="k">def</span> <span class="nf">_hnf_row</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">si</span><span class="p">,</span> <span class="n">sj</span><span class="p">):</span>
-        <span class="sd">"""</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        determine row-style HNF up to the si-th row and the sj-th column elements</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">si</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_row</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">sj</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_column</span><span class="p">):</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_A</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_basis_from</span>
 
@@ -390,7 +391,7 @@
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hnf_row</span><span class="p">(</span><span class="n">si</span><span class="p">,</span> <span class="n">sj</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">hermite_normal_form</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">"""</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        calculate row-style Hermite normal form</span>
 
 <span class="sd">        Returns</span>
@@ -399,7 +400,7 @@
 <span class="sd">            Hermite normal form of M, upper-triangular integer matrix</span>
 <span class="sd">        L: array, (m, m)</span>
 <span class="sd">            unimodular matrix s.t. H = np.dot(L, M)</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">A</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_A</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="n">basis_from</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_basis_from</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="n">basis_to</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_basis_to</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -419,17 +420,17 @@
 
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">with_standard_basis</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">A</span><span class="p">):</span>
-        <span class="sd">"""</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        create homomorhism with regard A as a matrix representation with standard basis</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        A: array, (m, n)</span>
 <span class="sd">            matrix representation of homomorhism: Z^m -&gt; Z^n</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">A</span><span class="o">.</span><span class="n">ndim</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"matrix representation must be 2d"</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;matrix representation must be 2d&quot;</span><span class="p">)</span>
 
         <span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span>
         <span class="n">basis_from</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_standard_basis</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
@@ -439,7 +440,7 @@
 
 
 <div class="viewcode-block" id="smith_normal_form"><a class="viewcode-back" href="../../api.core.html#hsnf.smith_normal_form">[docs]</a><span class="k">def</span> <span class="nf">smith_normal_form</span><span class="p">(</span><span class="n">M</span><span class="p">:</span> <span class="n">NDArrayInt</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">NDArrayInt</span><span class="p">,</span> <span class="n">NDArrayInt</span><span class="p">,</span> <span class="n">NDArrayInt</span><span class="p">]:</span>
-    <span class="sd">"""</span>
+    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculate Smith normal form of integer matrix `M`.</span>
 <span class="sd">    Returned matrices `(D, L, R)` satisfy ``D = np.dot(L, np.dot(M, R))``.</span>
 
@@ -456,13 +457,13 @@
 <span class="sd">        Unimodular matrix</span>
 <span class="sd">    R: array, (n, n)</span>
 <span class="sd">        Unimodular matrix</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">zmh</span> <span class="o">=</span> <span class="n">ZmoduleHomomorphism</span><span class="o">.</span><span class="n">with_standard_basis</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">zmh</span><span class="o">.</span><span class="n">smith_normal_form</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="row_style_hermite_normal_form"><a class="viewcode-back" href="../../api.core.html#hsnf.row_style_hermite_normal_form">[docs]</a><span class="k">def</span> <span class="nf">row_style_hermite_normal_form</span><span class="p">(</span><span class="n">M</span><span class="p">:</span> <span class="n">NDArrayInt</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">NDArrayInt</span><span class="p">,</span> <span class="n">NDArrayInt</span><span class="p">]:</span>
-    <span class="sd">"""</span>
+    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculate row-style Hermite normal form of `M`.</span>
 <span class="sd">    Returned matrices `(H, L)` satisfy ``H = np.dot(L, M)``.</span>
 
@@ -477,13 +478,13 @@
 <span class="sd">        Hermite normal form of M, upper-triangular integer matrix</span>
 <span class="sd">    L: array, (m, m)</span>
 <span class="sd">        Unimodular matrix</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">zmh</span> <span class="o">=</span> <span class="n">ZmoduleHomomorphism</span><span class="o">.</span><span class="n">with_standard_basis</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">zmh</span><span class="o">.</span><span class="n">hermite_normal_form</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="column_style_hermite_normal_form"><a class="viewcode-back" href="../../api.core.html#hsnf.column_style_hermite_normal_form">[docs]</a><span class="k">def</span> <span class="nf">column_style_hermite_normal_form</span><span class="p">(</span><span class="n">M</span><span class="p">:</span> <span class="n">NDArrayInt</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">NDArrayInt</span><span class="p">,</span> <span class="n">NDArrayInt</span><span class="p">]:</span>
-    <span class="sd">"""</span>
+    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculate column-style Hermite normal form of `M`</span>
 <span class="sd">    Returned matrices `(H, R)` satisfy ``H = np.dot(M, R)``</span>
 
@@ -498,7 +499,7 @@
 <span class="sd">        Hermite normal form of M, lower-triangular integer matrix</span>
 <span class="sd">    R: array, (n, n)</span>
 <span class="sd">        Unimodular matrix</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">zmh</span> <span class="o">=</span> <span class="n">ZmoduleHomomorphism</span><span class="o">.</span><span class="n">with_standard_basis</span><span class="p">(</span><span class="n">M</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
     <span class="n">H_T</span><span class="p">,</span> <span class="n">R_T</span> <span class="o">=</span> <span class="n">zmh</span><span class="o">.</span><span class="n">hermite_normal_form</span><span class="p">()</span>
     <span class="n">H</span> <span class="o">=</span> <span class="n">H_T</span><span class="o">.</span><span class="n">T</span>
@@ -540,6 +541,7 @@
 </div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/scripts/furo.js"></script>
     </body>
