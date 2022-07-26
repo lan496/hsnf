@@ -40,7 +40,7 @@ extensions = [
     "sphinx.ext.viewcode",
     "sphinx.ext.autosummary",
     "sphinx.ext.mathjax",
-    "m2r2",
+    "myst_parser",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -52,7 +52,7 @@ templates_path = ["_templates"]
 exclude_patterns = ["README.md"]
 
 # The suffix(es) of source filenames.
-source_suffix = [".rst", ".md"]
+source_suffix = [".rst"]
 
 autoclass_content = "both"
 autodoc_typehints = "signature"
@@ -69,7 +69,8 @@ napoleon_use_ivar = True
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = "furo"
+html_theme = "sphinx_book_theme"
+html_title = project + " " + version
 html_theme_options = {
     "navigation_with_keys": True,
 }
