@@ -38,9 +38,8 @@ EXTRAS = {
     "docs": [
         "sphinx",
         "sphinx-autobuild",
-        # "sphinx-autodoc-typehints",
-        "furo",
-        "m2r2",
+        "myst-parser",
+        "sphinx-book-theme",
     ],
 }
 
