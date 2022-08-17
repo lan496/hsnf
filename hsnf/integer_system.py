@@ -1,4 +1,4 @@
-from typing import Optional
+from __future__ import annotations
 
 import numpy as np
 from scipy.linalg import solve_triangular
@@ -63,7 +63,7 @@ def solve_integer_linear_system(A: NDArrayInt, b: NDArrayInt):
 
 
 def solve_frobenius_congruent(
-    A: NDArrayInt, b: Optional[NDArrayInt] = None, denominator: int = 1000000
+    A: NDArrayInt, b: NDArrayInt | None = None, denominator: int = 1000000
 ):
     r"""
     For given :math:`\mathbf{A} \in \mathbb{Z}^{m \times n}` and :math:`\mathbf{b} \in \mathbb{Z}^{m}`, solve Frobenius congruent :math:`\mathbf{Ax} \equiv \mathbf{b} \, (\mathrm{mod}\, \mathbb{R}/\mathbb{Z})` for :math:`\mathbf{x} \in \mathbb{R}^{n}`.
@@ -97,7 +97,7 @@ def solve_frobenius_congruent(
     basis_R: array, (n - rank, n)
         ``basis_R[i, :]`` is a solution of :math:`\mathbf{Ax} \equiv \mathbf{0} \, (\mathrm{mod}\, \mathbb{R}/\mathbb{Z})`
     x_special: array, (n, )
-        Special solution :math:`\mathbf{x}_{\mathrm{special}}`
+        (Return if `b` is specified) Special solution :math:`\mathbf{x}_{\mathrm{special}}`
     """
     D, P, Q = smith_normal_form(A)
     rank = get_triangular_rank(D)

@@ -10,8 +10,10 @@
 
 Computing Hermite normal form and Smith normal form with transformation matrices.
 
-- Github: https://github.com/lan496/hsnf
-- PyPI: https://pypi.org/project/hsnf/
+- Document: <https://lan496.github.io/hsnf>
+- Document(develop): <https://lan496.github.io/hsnf/develop>
+- Github: <https://github.com/lan496/hsnf>
+- PyPI: <https://pypi.org/project/hsnf>
 
 ## Usage
 

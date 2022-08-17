@@ -108,3 +108,4 @@ docs_build
 doctrees/
 
 .vscode
+codecov
