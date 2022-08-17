@@ -2,6 +2,8 @@
 # Distributed under the terms of the MIT License.
 from __future__ import annotations
 
+import warnings
+
 import numpy as np
 
 from hsnf.utils import NDArrayInt, get_nonzero_min_abs_full, get_nonzero_min_abs_row
@@ -22,6 +24,9 @@ class ZmoduleHomomorphism:
     """
 
     def __init__(self, A, basis_from, basis_to):
+        if A.dtype not in [np.int32, np.int64]:
+            warnings.warn("Decomposed matrix should be integer.")
+
         self._A = A
         self._basis_from = basis_from
         self._basis_to = basis_to
