@@ -26,7 +26,7 @@ from importlib.metadata import version
 
 release = version("hsnf")
 # for example take major/minor
-version = ".".join(release.split(".")[:2])
+version = release.split("+")[0]
 
 # -- General configuration ---------------------------------------------------
 
