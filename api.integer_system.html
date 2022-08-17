@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Integer linear system &#8212; hsnf 0.3</title>
+    <title>Integer linear system &#8212; hsnf 0.3.14.dev25</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -74,7 +74,7 @@
       
       
       
-      <h1 class="site-logo" id="site-title">hsnf 0.3</h1>
+      <h1 class="site-logo" id="site-title">hsnf 0.3.14.dev25</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -96,6 +96,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="definition.html">
    Definition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="integer_linear_system.html">
+   Integer Linear System
   </a>
  </li>
  <li class="toctree-l1 current active has-children">
@@ -303,7 +308,7 @@ General solutions are written as</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="hsnf.integer_system.solve_frobenius_congruent">
-<span class="sig-prename descclassname"><span class="pre">hsnf.integer_system.</span></span><span class="sig-name descname"><span class="pre">solve_frobenius_congruent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.int64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.int64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denominator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1000000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsnf/integer_system.html#solve_frobenius_congruent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsnf.integer_system.solve_frobenius_congruent" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">hsnf.integer_system.</span></span><span class="sig-name descname"><span class="pre">solve_frobenius_congruent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">NDArrayInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">NDArrayInt</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denominator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1000000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsnf/integer_system.html#solve_frobenius_congruent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsnf.integer_system.solve_frobenius_congruent" title="Permalink to this definition">#</a></dt>
 <dd><p>For given <span class="math notranslate nohighlight">\(\mathbf{A} \in \mathbb{Z}^{m \times n}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b} \in \mathbb{Z}^{m}\)</span>, solve Frobenius congruent <span class="math notranslate nohighlight">\(\mathbf{Ax} \equiv \mathbf{b} \, (\mathrm{mod}\, \mathbb{R}/\mathbb{Z})\)</span> for <span class="math notranslate nohighlight">\(\mathbf{x} \in \mathbb{R}^{n}\)</span>.
 Let the rank of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> as <span class="math notranslate nohighlight">\(r\)</span>.
 General solutions are written as</p>
@@ -328,7 +333,7 @@ General solutions are written as</p>
 <dd class="field-even"><p><ul class="simple">
 <li><p><strong>basis_Z</strong> (<em>array, (rank, n)</em>) – <code class="docutils literal notranslate"><span class="pre">basis_Z[i,</span> <span class="pre">:]</span></code> is a solution of <span class="math notranslate nohighlight">\(\mathbf{Ax} \equiv \mathbf{0} \, (\mathrm{mod} \, \mathbb{Z})\)</span></p></li>
 <li><p><strong>basis_R</strong> (<em>array, (n - rank, n)</em>) – <code class="docutils literal notranslate"><span class="pre">basis_R[i,</span> <span class="pre">:]</span></code> is a solution of <span class="math notranslate nohighlight">\(\mathbf{Ax} \equiv \mathbf{0} \, (\mathrm{mod}\, \mathbb{R}/\mathbb{Z})\)</span></p></li>
-<li><p><strong>x_special</strong> (<em>array, (n, )</em>) – Special solution <span class="math notranslate nohighlight">\(\mathbf{x}_{\mathrm{special}}\)</span></p></li>
+<li><p><strong>x_special</strong> (<em>array, (n, )</em>) – (Return if <cite>b</cite> is specified) Special solution <span class="math notranslate nohighlight">\(\mathbf{x}_{\mathrm{special}}\)</span></p></li>
 </ul>
 </p>
 </dd>

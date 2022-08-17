@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Definition &#8212; hsnf 0.3.14.dev25</title>
+    <title>Integer Linear system &#8212; hsnf 0.3.14.dev25</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -34,8 +34,8 @@
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Integer Linear system" href="integer_linear_system.html" />
-    <link rel="prev" title="hsnf" href="index.html" />
+    <link rel="next" title="API Reference" href="api.html" />
+    <link rel="prev" title="Definition" href="definition.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -93,13 +93,13 @@
    Introduction
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="definition.html">
    Definition
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="integer_linear_system.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Integer Linear System
   </a>
  </li>
@@ -213,7 +213,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/definition.rst.txt"
+        <a href="_sources/integer_linear_system.md.txt"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -224,7 +224,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.rst</span>
+<span class="headerbtn__text-container">.md</span>
 </a>
 
       </li>
@@ -273,23 +273,18 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#smith-normal-form">
-   Smith normal form
+  <a class="reference internal nav-link" href="#id1">
+   Integer linear system
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#row-style-hermite-normal-form">
-   Row-style Hermite normal form
+  <a class="reference internal nav-link" href="#frobenius-congruent">
+   Frobenius congruent
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#column-style-hermite-normal-form">
-   Column-style Hermite normal form
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#reference-japanese">
-   Reference (Japanese)
+  <a class="reference internal nav-link" href="#modular-integer-linear-system">
+   Modular integer linear system
   </a>
  </li>
 </ul>
@@ -301,7 +296,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Definition</h1>
+                <h1>Integer Linear system</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -312,23 +307,18 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#smith-normal-form">
-   Smith normal form
+  <a class="reference internal nav-link" href="#id1">
+   Integer linear system
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#row-style-hermite-normal-form">
-   Row-style Hermite normal form
+  <a class="reference internal nav-link" href="#frobenius-congruent">
+   Frobenius congruent
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#column-style-hermite-normal-form">
-   Column-style Hermite normal form
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#reference-japanese">
-   Reference (Japanese)
+  <a class="reference internal nav-link" href="#modular-integer-linear-system">
+   Modular integer linear system
   </a>
  </li>
 </ul>
@@ -341,55 +331,53 @@ title="Print to PDF"
                 
               <div>
                 
-  <section id="definition">
-<h1>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">#</a></h1>
-<section id="smith-normal-form">
-<h2>Smith normal form<a class="headerlink" href="#smith-normal-form" title="Permalink to this headline">#</a></h2>
-<p>Let <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> be <span class="math notranslate nohighlight">\(m \times n\)</span> integer matrix.
-There exist some unimodular matrices <span class="math notranslate nohighlight">\(\mathbf{L} \in \mathbb{Z}^{m \times m}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{R} \in \mathbb{Z}^{n \times n}\)</span> such that</p>
+  <section id="integer-linear-system">
+<h1>Integer Linear system<a class="headerlink" href="#integer-linear-system" title="Permalink to this headline">#</a></h1>
+<section id="id1">
+<h2>Integer linear system<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<p>For given <span class="math notranslate nohighlight">\(\mathbf{A} \in \mathbb{Z}^{m \times n}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b} \in \mathbb{Z}^{m}\)</span>, consider to solve integer linear system <span class="math notranslate nohighlight">\(\mathbf{Ax} = \mathbf{b}\)</span> in <span class="math notranslate nohighlight">\(\mathbf{x} \in \mathbb{Z}^{n}\)</span>.
+Let the Smith normal form of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> be <span class="math notranslate nohighlight">\(\mathbf{D} = \mathbf{LAR}\)</span>, where <span class="math notranslate nohighlight">\(\mathbf{L}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{R}\)</span> are unimodular matrices.</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\mathbf{D}
-:=
-\mathbf{LMR}
-=
-\begin{pmatrix}
-    d_{1}      &amp;        &amp; \mathbf{O}          &amp; \mathbf{0} \\
-               &amp; \ddots &amp;                     &amp; \vdots     \\
-    \mathbf{O} &amp;        &amp; d_{r}               &amp; \mathbf{0} \\
-    \mathbf{0} &amp; \cdots &amp; \mathbf{0} &amp; \mathbf{O}
-\end{pmatrix}\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(d_{i}\)</span> is positive integer and <span class="math notranslate nohighlight">\(d_{i+1}\)</span> devides <span class="math notranslate nohighlight">\(d_{i}\)</span>.
-Then <span class="math notranslate nohighlight">\(\mathbf{D}\)</span> is called Smith normal form.</p>
+\[\begin{split}  \mathbf{LAx} &amp;= \mathbf{Lb} \\
+  \mathbf{Dy}  &amp;= \mathbf{v} \quad \mbox{where}\, \mathbf{y}:= \mathbf{R}^{-1} \mathbf{x},\, \mathbf{v}:= \mathbf{Lb} \\
+  \mathbf{y}
+    &amp;= \begin{pmatrix} \frac{v_{1}}{D_{11}} \\ \vdots \\ \frac{v_{r}}{D_{rr}} \\ 0 \\ \vdots \\ 0 \end{pmatrix}
+        + \begin{pmatrix} 0 \\ \vdots \\ 0 \\ n_{r+1} \\ \vdots \\ n_{m} \end{pmatrix}
+        \quad (\forall n_{r+1},\cdots, n_{m} \in \mathbb{Z})\end{split}\]</div>
+<p>When <span class="math notranslate nohighlight">\(v_{j} = 0(\forall j = r+1, \cdots n)\)</span>, a special solution exists.</p>
 </section>
-<section id="row-style-hermite-normal-form">
-<h2>Row-style Hermite normal form<a class="headerlink" href="#row-style-hermite-normal-form" title="Permalink to this headline">#</a></h2>
-<p>Let <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> be <span class="math notranslate nohighlight">\(m \times n\)</span> integer matrix.
-It has a row-style Hermite normal form <span class="math notranslate nohighlight">\(\mathbf{H}\)</span> if there exists a unimodular matrices <span class="math notranslate nohighlight">\(\mathbf{L} \in \mathbb{Z}^{m \times m}\)</span> such that <span class="math notranslate nohighlight">\(\mathbf{H}=\mathbf{LM}\)</span> satisfied the following conditions</p>
-<ol class="arabic simple">
-<li><p><span class="math notranslate nohighlight">\(H_{ij} \geq 0 \quad (1 \leq i \leq m, 1 \leq j \leq n)\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(H_{ij} = 0 \quad (i &gt; j \, \wedge i &gt; r)\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(H_{ij} &lt; H_{jj} \quad (i &lt; j, 1 \leq j \leq r)\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(r = \mathrm{rank} \mathbf{A}\)</span></p></li>
-</ol>
-<p>If <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> is full rank, the Hermite normal form <span class="math notranslate nohighlight">\(\mathbf{H}\)</span> is uniquely determined.</p>
+<section id="frobenius-congruent">
+<h2>Frobenius congruent<a class="headerlink" href="#frobenius-congruent" title="Permalink to this headline">#</a></h2>
+<p>For given <span class="math notranslate nohighlight">\(\mathbf{A} \in \mathbb{Z}^{m \times n}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b} \in \mathbb{Z}^{m}\)</span>, consider to solve Frobenius congruent <span class="math notranslate nohighlight">\(\mathbf{Ax} \equiv \mathbf{b} \, (\mathrm{mod}\, \mathbb{R}/\mathbb{Z})\)</span> for <span class="math notranslate nohighlight">\(\mathbf{x} \in \mathbb{R}^{n}\)</span>.
+Let the Smith normal form of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> be <span class="math notranslate nohighlight">\(\mathbf{D} = \mathbf{LAR}\)</span>, where <span class="math notranslate nohighlight">\(\mathbf{L}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{R}\)</span> are unimodular matrices.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}  \mathbf{LAx} &amp;= \mathbf{Lb} + \mathbb{Z}^{n} \\
+  \mathbf{Dy}  &amp;= \mathbf{v} + \mathbb{Z}^{n} \quad \mbox{where}\, \mathbf{y}:= \mathbf{R}^{-1} \mathbf{x},\, \mathbf{v}:= \mathbf{Lb} \\
+  \mathbf{y}
+    &amp;= \begin{pmatrix} \frac{v_{1}}{D_{11}} \\ \vdots \\ \frac{v_{r}}{D_{rr}} \\ 0 \\ \vdots \\ 0 \end{pmatrix}
+        + \begin{pmatrix} \frac{1}{D_{11}} n_{1} \\ \vdots \\ \frac{1}{D_{rr}} n_{r} \\ 0 \\ \vdots \\ 0 \end{pmatrix}
+        + \begin{pmatrix} 0 \\ \vdots \\ 0 \\ a_{r+1} \\ \vdots \\ a_{m} \end{pmatrix}
+        \quad (\forall n_{1}, \cdots, n_{r} \in \mathbb{Z}, \forall a_{r+1}, \cdots, a_{m} \in \mathbb{R})\end{split}\]</div>
 </section>
-<section id="column-style-hermite-normal-form">
-<h2>Column-style Hermite normal form<a class="headerlink" href="#column-style-hermite-normal-form" title="Permalink to this headline">#</a></h2>
-<p>Let <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> be <span class="math notranslate nohighlight">\(m \times n\)</span> integer matrix.
-It has a column-style Hermite normal form <span class="math notranslate nohighlight">\(\mathbf{H}\)</span> if there exists a unimodular matrices <span class="math notranslate nohighlight">\(\mathbf{R} \in \mathbb{Z}^{n \times n}\)</span> such that <span class="math notranslate nohighlight">\(\mathbf{H}=\mathbf{MR}\)</span> satisfied the following conditions</p>
-<ol class="arabic simple">
-<li><p><span class="math notranslate nohighlight">\(H_{ij} \geq 0 \quad (1 \leq i \leq m, 1 \leq j \leq n)\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(H_{ij} = 0 \quad (i &lt; j \, \wedge j &gt; r)\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(H_{ij} &lt; H_{ii} \quad (i &gt; j, 1 \leq i \leq r)\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(r = \mathrm{rank} \mathbf{A}\)</span></p></li>
-</ol>
-<p>If <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> is full rank, the Hermite normal form <span class="math notranslate nohighlight">\(\mathbf{H}\)</span> is uniquely determined.</p>
-</section>
-<section id="reference-japanese">
-<h2>Reference (Japanese)<a class="headerlink" href="#reference-japanese" title="Permalink to this headline">#</a></h2>
-<ul class="simple">
-<li><p>伊理 正夫, 線形代数汎論 (朝倉出版, 2009)</p></li>
-</ul>
+<section id="modular-integer-linear-system">
+<h2>Modular integer linear system<a class="headerlink" href="#modular-integer-linear-system" title="Permalink to this headline">#</a></h2>
+<p>For given <span class="math notranslate nohighlight">\(\mathbf{A} \in \mathbb{Z}^{m \times n}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b} \in \mathbb{Z}^{m}\)</span>, consider to solve modular integer linear system <span class="math notranslate nohighlight">\(\mathbf{Ax} \equiv \mathbf{b} \, (\mathrm{mod} \, q)\)</span> in <span class="math notranslate nohighlight">\(\mathbf{x} \in \mathbb{Z}^{n}\)</span>.</p>
+<p>First, We consider finding one of solutions of <span class="math notranslate nohighlight">\(\mathbf{Ax}=\mathbf{b} \, (\mathrm{mod} p^{k})\)</span> for given <span class="math notranslate nohighlight">\(\mathbf{A} \in \mathbb{Z}^{m \times n}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b} \in \mathbb{Z}^{m}\)</span>.</p>
+<p>Let the Smith normal form of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> be <span class="math notranslate nohighlight">\(\mathbf{D} = \mathbf{LAR}\)</span>, where <span class="math notranslate nohighlight">\(\mathbf{L}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{R}\)</span> are unimodular matrices.
+Now it is sufficient to solve <span class="math notranslate nohighlight">\(\mathbf{Dy} = \mathbf{Lb} \, (\mathrm{mod} p^{k})\)</span> for <span class="math notranslate nohighlight">\(\mathbf{y} \in \mathbb{Z}^{m}\)</span>.
+After we obtain <span class="math notranslate nohighlight">\(\mathbf{y}\)</span>, we easily obtain the solution of the original linear systems as <span class="math notranslate nohighlight">\(\mathbf{x} = \mathbf{Ry} \, (\mathrm{mod} p^{k})\)</span>.</p>
+<p>We write the SNF as <span class="math notranslate nohighlight">\(\mathbf{D} = \mathrm{diag}(d_{1}, \cdots, d_{r}, 0, \cdots)\)</span>.
+Then, the <span class="math notranslate nohighlight">\(i\)</span>th element of <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> is determined by solving</p>
+<div class="math notranslate nohighlight">
+\[d_{i} y_{i} = [\mathbf{Lb}]_{i} \quad (\mathrm{mod} \, p^{k})\]</div>
+<p>for <span class="math notranslate nohighlight">\(i=1, \cdots, r\)</span>.
+The above can be solved by the extended Euclidean algorithm.
+If <span class="math notranslate nohighlight">\(\mathrm{GCD}(d_{i}, p^{k})\)</span> does not divide <span class="math notranslate nohighlight">\(p^{k}\)</span> for some <span class="math notranslate nohighlight">\(i\)</span>, no solution exists.</p>
+<p>Note that multiple solutions <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> may exist for <span class="math notranslate nohighlight">\(k \geq 2\)</span>.
+If we need all the solutions, the next task is to construct an integer lattice formed by <span class="math notranslate nohighlight">\(\mathbf{Ax}=\mathbf{0} \, (\mathrm{mod}\,p^{k})\)</span>.
+This problem can also be solved by a lattice algorithm shown in <a class="reference external" href="https://cseweb.ucsd.edu/classes/wi12/cse206A-a/lec4.pdf">this lecture note</a>.</p>
+<p>The generalization from prime powers <span class="math notranslate nohighlight">\(p^{k}\)</span> to other composite numbers <span class="math notranslate nohighlight">\(l\)</span> is straightforward.
+After factoring <span class="math notranslate nohighlight">\(l\)</span> and solving the linear equations for each prime power, we can get a solution of <span class="math notranslate nohighlight">\(\mathbf{Ax} = \mathbf{b} \, (\mathrm{mod}\, n)\)</span> by the Chinese remainder theorem.</p>
 </section>
 </section>
 
@@ -401,17 +389,17 @@ It has a column-style Hermite normal form <span class="math notranslate nohighli
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="index.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="definition.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">hsnf</p>
+            <p class="prev-next-title">Definition</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="integer_linear_system.html" title="next page">
+    <a class='right-next' id="next-link" href="api.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Integer Linear system</p>
+        <p class="prev-next-title">API Reference</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

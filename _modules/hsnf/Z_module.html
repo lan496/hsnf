@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>hsnf.Z_module &#8212; hsnf 0.3</title>
+    <title>hsnf.Z_module &#8212; hsnf 0.3.14.dev25</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -70,7 +70,7 @@
       
       
       
-      <h1 class="site-logo" id="site-title">hsnf 0.3</h1>
+      <h1 class="site-logo" id="site-title">hsnf 0.3.14.dev25</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
@@ -92,6 +92,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../../definition.html">
    Definition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../integer_linear_system.html">
+   Integer Linear System
   </a>
  </li>
  <li class="toctree-l1 has-children">
@@ -224,6 +229,8 @@ title="Fullscreen mode"
 <span class="c1"># Distributed under the terms of the MIT License.</span>
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
 
+<span class="kn">import</span> <span class="nn">warnings</span>
+
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="kn">from</span> <span class="nn">hsnf.utils</span> <span class="kn">import</span> <span class="n">NDArrayInt</span><span class="p">,</span> <span class="n">get_nonzero_min_abs_full</span><span class="p">,</span> <span class="n">get_nonzero_min_abs_row</span>
@@ -244,6 +251,9 @@ title="Fullscreen mode"
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">basis_from</span><span class="p">,</span> <span class="n">basis_to</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">A</span><span class="o">.</span><span class="n">dtype</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">]:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;Decomposed matrix should be integer.&quot;</span><span class="p">)</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">_A</span> <span class="o">=</span> <span class="n">A</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_basis_from</span> <span class="o">=</span> <span class="n">basis_from</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_basis_to</span> <span class="o">=</span> <span class="n">basis_to</span>

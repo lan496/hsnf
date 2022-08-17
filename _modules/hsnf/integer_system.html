@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>hsnf.integer_system &#8212; hsnf 0.3</title>
+    <title>hsnf.integer_system &#8212; hsnf 0.3.14.dev25</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -70,7 +70,7 @@
       
       
       
-      <h1 class="site-logo" id="site-title">hsnf 0.3</h1>
+      <h1 class="site-logo" id="site-title">hsnf 0.3.14.dev25</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
@@ -92,6 +92,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../../definition.html">
    Definition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../integer_linear_system.html">
+   Integer Linear System
   </a>
  </li>
  <li class="toctree-l1 has-children">
@@ -220,7 +225,7 @@ title="Fullscreen mode"
               <div>
                 
   <h1>Source code for hsnf.integer_system</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">solve_triangular</span>
@@ -285,7 +290,7 @@ title="Fullscreen mode"
 
 
 <div class="viewcode-block" id="solve_frobenius_congruent"><a class="viewcode-back" href="../../api.integer_system.html#hsnf.integer_system.solve_frobenius_congruent">[docs]</a><span class="k">def</span> <span class="nf">solve_frobenius_congruent</span><span class="p">(</span>
-    <span class="n">A</span><span class="p">:</span> <span class="n">NDArrayInt</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">NDArrayInt</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">denominator</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1000000</span>
+    <span class="n">A</span><span class="p">:</span> <span class="n">NDArrayInt</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">NDArrayInt</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">denominator</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1000000</span>
 <span class="p">):</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    For given :math:`\mathbf{A} \in \mathbb{Z}^{m \times n}` and :math:`\mathbf{b} \in \mathbb{Z}^{m}`, solve Frobenius congruent :math:`\mathbf{Ax} \equiv \mathbf{b} \, (\mathrm{mod}\, \mathbb{R}/\mathbb{Z})` for :math:`\mathbf{x} \in \mathbb{R}^{n}`.</span>
@@ -319,7 +324,7 @@ title="Fullscreen mode"
 <span class="sd">    basis_R: array, (n - rank, n)</span>
 <span class="sd">        ``basis_R[i, :]`` is a solution of :math:`\mathbf{Ax} \equiv \mathbf{0} \, (\mathrm{mod}\, \mathbb{R}/\mathbb{Z})`</span>
 <span class="sd">    x_special: array, (n, )</span>
-<span class="sd">        Special solution :math:`\mathbf{x}_{\mathrm{special}}`</span>
+<span class="sd">        (Return if `b` is specified) Special solution :math:`\mathbf{x}_{\mathrm{special}}`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">D</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">Q</span> <span class="o">=</span> <span class="n">smith_normal_form</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
     <span class="n">rank</span> <span class="o">=</span> <span class="n">get_triangular_rank</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
