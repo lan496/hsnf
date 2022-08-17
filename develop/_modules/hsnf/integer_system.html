@@ -1,0 +1,516 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>hsnf.integer_system &#8212; hsnf 0.1.dev1</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">hsnf 0.1.dev1</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Contents
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../index.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../definition.html">
+   Definition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../integer_linear_system.html">
+   Integer Linear System
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../api.html">
+   API Reference
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../api.core.html">
+     Integer matrix
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../api.integer_system.html">
+     Integer linear system
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../api.lattice.html">
+     Lattice algorithm
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../changelog.html">
+   Change Log
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../genindex.html">
+   genindex
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1></h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <h1>Source code for hsnf.integer_system</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">solve_triangular</span>
+
+<span class="kn">from</span> <span class="nn">hsnf</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">column_style_hermite_normal_form</span><span class="p">,</span>
+    <span class="n">row_style_hermite_normal_form</span><span class="p">,</span>
+    <span class="n">smith_normal_form</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">hsnf.lattice</span> <span class="kn">import</span> <span class="n">compute_dual</span>
+<span class="kn">from</span> <span class="nn">hsnf.utils</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">NDArrayInt</span><span class="p">,</span>
+    <span class="n">crt_on_list</span><span class="p">,</span>
+    <span class="n">eratosthenes</span><span class="p">,</span>
+    <span class="n">extgcd</span><span class="p">,</span>
+    <span class="n">get_triangular_rank</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="solve_integer_linear_system"><a class="viewcode-back" href="../../api.integer_system.html#hsnf.integer_system.solve_integer_linear_system">[docs]</a><span class="k">def</span> <span class="nf">solve_integer_linear_system</span><span class="p">(</span><span class="n">A</span><span class="p">:</span> <span class="n">NDArrayInt</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">NDArrayInt</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    For given :math:`\mathbf{A} \in \mathbb{Z}^{m \times n}` and :math:`\mathbf{b} \in \mathbb{Z}^{m}`, solve integer linear system :math:`\mathbf{Ax} = \mathbf{b}` in :math:`\mathbf{x} \in \mathbb{Z}^{n}`.</span>
+<span class="sd">    Let the rank of :math:`\mathbf{A}` as :math:`r`.</span>
+<span class="sd">    General solutions are written as</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">        \{</span>
+<span class="sd">            \mathbf{x}_{\mathrm{special}} + \sum_{i=0}^{r-1} a_{i} \cdot \mathrm{basis[i]}</span>
+<span class="sd">            \mid</span>
+<span class="sd">            a_{i} \in \mathbb{Z}</span>
+<span class="sd">        \}.</span>
+
+<span class="sd">    If no solution exists, return None.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    A: array, (m, n)</span>
+<span class="sd">        Integer coefficient matrix</span>
+<span class="sd">    b: array, (m, )</span>
+<span class="sd">        Integer offsets</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    basis: array, (rank, n)</span>
+<span class="sd">        ``basis[i, :]`` is a solution of :math:`\mathbf{Ax}=\mathbf{0}`</span>
+<span class="sd">    x_special: array, (n, )</span>
+<span class="sd">        Special solution :math:`\mathbf{x}_{\mathrm{special}}`</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">H</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="n">column_style_hermite_normal_form</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+    <span class="n">rank</span> <span class="o">=</span> <span class="n">get_triangular_rank</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
+
+    <span class="n">x_special</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">x_special</span><span class="p">[:</span><span class="n">rank</span><span class="p">]</span> <span class="o">=</span> <span class="n">solve_triangular</span><span class="p">(</span><span class="n">H</span><span class="p">[:</span><span class="n">rank</span><span class="p">,</span> <span class="p">:</span><span class="n">rank</span><span class="p">],</span> <span class="n">b</span><span class="p">[:</span><span class="n">rank</span><span class="p">],</span> <span class="n">lower</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">x_special</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">x_special</span><span class="p">)):</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">x_special</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">x_special</span><span class="p">)</span>
+
+    <span class="n">basis</span> <span class="o">=</span> <span class="n">R</span><span class="p">[:,</span> <span class="p">:</span><span class="n">rank</span><span class="p">]</span><span class="o">.</span><span class="n">T</span>
+
+    <span class="k">return</span> <span class="n">basis</span><span class="p">,</span> <span class="n">x_special</span></div>
+
+
+<div class="viewcode-block" id="solve_frobenius_congruent"><a class="viewcode-back" href="../../api.integer_system.html#hsnf.integer_system.solve_frobenius_congruent">[docs]</a><span class="k">def</span> <span class="nf">solve_frobenius_congruent</span><span class="p">(</span>
+    <span class="n">A</span><span class="p">:</span> <span class="n">NDArrayInt</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">NDArrayInt</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">denominator</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1000000</span>
+<span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    For given :math:`\mathbf{A} \in \mathbb{Z}^{m \times n}` and :math:`\mathbf{b} \in \mathbb{Z}^{m}`, solve Frobenius congruent :math:`\mathbf{Ax} \equiv \mathbf{b} \, (\mathrm{mod}\, \mathbb{R}/\mathbb{Z})` for :math:`\mathbf{x} \in \mathbb{R}^{n}`.</span>
+<span class="sd">    Let the rank of :math:`\mathbf{A}` as :math:`r`.</span>
+<span class="sd">    General solutions are written as</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">        \{</span>
+<span class="sd">            \mathbf{x}_{\mathrm{special}}</span>
+<span class="sd">            + \sum_{i=0}^{r-1} a_{i} \cdot \mathrm{basis\_Z[i]}</span>
+<span class="sd">            + \sum_{j=0}^{n-r-1} c_{j} \cdot \mathrm{basis\_R[j]}</span>
+<span class="sd">            \mid</span>
+<span class="sd">            a_{i} \in \mathbb{Z}, c_{j} \in \mathbb{R}</span>
+<span class="sd">        \}.</span>
+
+<span class="sd">    If no solution exists, return None.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    A: array, (m, n)</span>
+<span class="sd">        Integer coefficient matrix</span>
+<span class="sd">    b: (Optional) array, (m, )</span>
+<span class="sd">        Integer offsets</span>
+<span class="sd">    denominator:</span>
+<span class="sd">        (Optional) If specified, taking modulus as fraction with up to specified denominator</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    basis_Z: array, (rank, n)</span>
+<span class="sd">        ``basis_Z[i, :]`` is a solution of :math:`\mathbf{Ax} \equiv \mathbf{0} \, (\mathrm{mod} \, \mathbb{Z})`</span>
+<span class="sd">    basis_R: array, (n - rank, n)</span>
+<span class="sd">        ``basis_R[i, :]`` is a solution of :math:`\mathbf{Ax} \equiv \mathbf{0} \, (\mathrm{mod}\, \mathbb{R}/\mathbb{Z})`</span>
+<span class="sd">    x_special: array, (n, )</span>
+<span class="sd">        (Return if `b` is specified) Special solution :math:`\mathbf{x}_{\mathrm{special}}`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">D</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">Q</span> <span class="o">=</span> <span class="n">smith_normal_form</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+    <span class="n">rank</span> <span class="o">=</span> <span class="n">get_triangular_rank</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+
+    <span class="n">D_pinv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">Q</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">rank</span><span class="p">))</span>
+    <span class="n">D_pinv</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">diag_indices</span><span class="p">(</span><span class="n">rank</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">D</span><span class="o">.</span><span class="n">diagonal</span><span class="p">()[:</span><span class="n">rank</span><span class="p">]</span>
+    <span class="c1"># basis_Z[i, :] is the i-th general Z-solution of x</span>
+    <span class="n">basis_Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">D_pinv</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+
+    <span class="k">if</span> <span class="n">rank</span> <span class="o">&lt;</span> <span class="n">Q</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="n">y_R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">Q</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">Q</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">rank</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Q</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">rank</span><span class="p">):</span>
+            <span class="n">y_R</span><span class="p">[</span><span class="n">rank</span> <span class="o">+</span> <span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">basis_R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">y_R</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">basis_R</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">if</span> <span class="n">b</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">basis_Z</span><span class="p">,</span> <span class="n">basis_R</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">remainder1_with_denominator</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span> <span class="n">denominator</span><span class="p">)</span>  <span class="c1"># for avoiding numerical error</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="n">rank</span><span class="p">:])</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">basis_Z</span><span class="p">,</span> <span class="n">basis_R</span><span class="p">,</span> <span class="kc">None</span>
+
+        <span class="n">y_special</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">y_special</span><span class="p">[:</span><span class="n">rank</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">[:</span><span class="n">rank</span><span class="p">]</span> <span class="o">/</span> <span class="n">D</span><span class="o">.</span><span class="n">diagonal</span><span class="p">()[:</span><span class="n">rank</span><span class="p">]</span>
+        <span class="n">x_special</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">y_special</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">basis_Z</span><span class="p">,</span> <span class="n">basis_R</span><span class="p">,</span> <span class="n">x_special</span></div>
+
+
+<div class="viewcode-block" id="solve_modular_integer_linear_system"><a class="viewcode-back" href="../../api.integer_system.html#hsnf.integer_system.solve_modular_integer_linear_system">[docs]</a><span class="k">def</span> <span class="nf">solve_modular_integer_linear_system</span><span class="p">(</span><span class="n">A</span><span class="p">:</span> <span class="n">NDArrayInt</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">NDArrayInt</span><span class="p">,</span> <span class="n">q</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    For given :math:`\mathbf{A} \in \mathbb{Z}^{m \times n}` and :math:`\mathbf{b} \in \mathbb{Z}^{m}`, solve modular integer linear system :math:`\mathbf{Ax} \equiv \mathbf{b} \, (\mathrm{mod} \, q)` in :math:`\mathbf{x} \in \mathbb{Z}^{n}`.</span>
+<span class="sd">    General solutions are written as</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">        \{</span>
+<span class="sd">            \mathbf{x}_{\mathrm{special}} + \sum_{i=0}^{r-1} a_{i} \cdot \mathrm{basis[i]}</span>
+<span class="sd">            \mid</span>
+<span class="sd">            a_{i} \in \mathbb{Z}</span>
+<span class="sd">        \}.</span>
+
+<span class="sd">    If no solution exists, return None.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    A: array, (m, n)</span>
+<span class="sd">        Integer coefficient matrix</span>
+<span class="sd">    b: array, (m, )</span>
+<span class="sd">        Integer offsets</span>
+<span class="sd">    q: int</span>
+<span class="sd">        Modulo</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    basis: array, (r, n)</span>
+<span class="sd">        ``basis[i, :]`` is a solution of :math:`\mathbf{Ax} \equiv \mathbf{0} \, (\mathrm{mod} \, q)`</span>
+<span class="sd">    x_special: array, (n, )</span>
+<span class="sd">        Special solution :math:`\mathbf{x}_{\mathrm{special}}`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">D</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="n">smith_normal_form</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+    <span class="n">rank</span> <span class="o">=</span> <span class="n">get_triangular_rank</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+    <span class="n">Lb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+    <span class="c1"># Special solution can be constructed by solving Ax=b in modulo prime powers and use Chinese remainder theorem.</span>
+    <span class="n">y_special</span> <span class="o">=</span> <span class="n">_solve_modular_integer_linear_system_special</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">Lb</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">rank</span><span class="p">)</span>
+    <span class="n">x_special</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">y_special</span><span class="p">),</span> <span class="n">q</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">x_special</span><span class="p">)</span> <span class="o">-</span> <span class="n">b</span><span class="p">,</span> <span class="n">q</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># General solution of Ax=0 (mod q)</span>
+    <span class="n">basis</span> <span class="o">=</span> <span class="n">_solve_modular_integer_linear_system_general</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">basis</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">),</span> <span class="n">q</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">basis</span><span class="p">,</span> <span class="n">x_special</span></div>
+
+
+<span class="k">def</span> <span class="nf">_solve_modular_integer_linear_system_general</span><span class="p">(</span><span class="n">A</span><span class="p">:</span> <span class="n">NDArrayInt</span><span class="p">,</span> <span class="n">q</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate general solutions of Ax=0 (mod q)</span>
+
+<span class="sd">    Implementation Note</span>
+<span class="sd">    -------------------</span>
+<span class="sd">    A: (m, n)</span>
+
+<span class="sd">    Consider q-ary lattices</span>
+<span class="sd">        Lambda_{q}^T := { x | Ax=0 (mod q) }</span>
+<span class="sd">        Lambda_{q}   := { x | x = A^T s (mod q) for some s }</span>
+<span class="sd">    They are dual each other:</span>
+<span class="sd">        Lambda_{q}^T = q * dual(Lambda_{q}).</span>
+<span class="sd">    A base of Lambda_{q} can be taken as A[i, :] (i=1...m) and q I[j, :] (j=1...n)</span>
+
+<span class="sd">    Ref: https://cseweb.ucsd.edu/classes/wi12/cse206A-a/lec4.pdf</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">redundant_compliment</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">A</span><span class="p">,</span> <span class="n">q</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># Choose independent vectors by HNF</span>
+    <span class="n">compliment</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">row_style_hermite_normal_form</span><span class="p">(</span><span class="n">redundant_compliment</span><span class="p">)</span>
+    <span class="n">rank</span> <span class="o">=</span> <span class="n">get_triangular_rank</span><span class="p">(</span><span class="n">compliment</span><span class="p">)</span>
+    <span class="n">compliment</span> <span class="o">=</span> <span class="n">compliment</span><span class="p">[:</span><span class="n">rank</span><span class="p">,</span> <span class="p">:]</span>
+
+    <span class="n">basis</span> <span class="o">=</span> <span class="n">q</span> <span class="o">*</span> <span class="n">compute_dual</span><span class="p">(</span><span class="n">compliment</span><span class="p">,</span> <span class="n">row_wise</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">basis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">basis</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">),</span> <span class="n">q</span><span class="p">)</span>
+
+    <span class="c1"># Remove zero vectors</span>
+    <span class="n">used</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">basis</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+    <span class="n">basis</span> <span class="o">=</span> <span class="n">basis</span><span class="p">[</span><span class="n">used</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">basis</span>
+
+
+<span class="k">def</span> <span class="nf">_solve_modular_integer_linear_system_special</span><span class="p">(</span><span class="n">D</span><span class="p">:</span> <span class="n">NDArrayInt</span><span class="p">,</span> <span class="n">Lb</span><span class="p">:</span> <span class="n">NDArrayInt</span><span class="p">,</span> <span class="n">q</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">rank</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate a special solution of Dy = Lb (mod q) where D is SNF.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">factors</span> <span class="o">=</span> <span class="n">eratosthenes</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+    <span class="n">specials</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">p</span><span class="p">,</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">factors</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">sol</span> <span class="o">=</span> <span class="n">_solve_modular_integer_linear_system_special_prime_power</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">Lb</span><span class="p">,</span> <span class="n">p</span><span class="o">**</span><span class="n">l</span><span class="p">,</span> <span class="n">rank</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">sol</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">D</span> <span class="o">@</span> <span class="n">sol</span> <span class="o">-</span> <span class="n">Lb</span><span class="p">,</span> <span class="n">p</span><span class="o">**</span><span class="n">l</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">specials</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">sol</span><span class="p">,</span> <span class="n">p</span><span class="o">**</span><span class="n">l</span><span class="p">))</span>
+
+    <span class="n">y_special</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">crt_on_list</span><span class="p">(</span><span class="n">specials</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">y_special</span>
+
+
+<span class="k">def</span> <span class="nf">_solve_modular_integer_linear_system_special_prime_power</span><span class="p">(</span>
+    <span class="n">D</span><span class="p">:</span> <span class="n">NDArrayInt</span><span class="p">,</span> <span class="n">Lb</span><span class="p">:</span> <span class="n">NDArrayInt</span><span class="p">,</span> <span class="n">prime_power</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">rank</span><span class="p">:</span> <span class="nb">int</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate a special solution of Dy = Lb (mod p^l) where D is SNF and p is prime.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">D</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="c1"># Solve D[i, i] * y[i] = Lb[i] (mod prime_power)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rank</span><span class="p">):</span>
+        <span class="n">g</span><span class="p">,</span> <span class="n">yi</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">extgcd</span><span class="p">(</span><span class="n">D</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">],</span> <span class="n">prime_power</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">Lb</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">%</span> <span class="n">g</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">yi</span> <span class="o">*</span> <span class="n">Lb</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">//</span> <span class="n">g</span>
+
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">prime_power</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">y</span>
+
+
+<span class="k">def</span> <span class="nf">remainder1_with_denominator</span><span class="p">(</span><span class="n">arr</span><span class="p">:</span> <span class="n">NDArrayInt</span><span class="p">,</span> <span class="n">denominator</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArrayInt</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    return arr (mod 1)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">arr_int</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">arr</span> <span class="o">*</span> <span class="n">denominator</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">arr_int_mod</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">remainder</span><span class="p">(</span><span class="n">arr_int</span><span class="p">,</span> <span class="n">denominator</span><span class="p">)</span>
+    <span class="n">arr_mod</span> <span class="o">=</span> <span class="n">arr_int_mod</span> <span class="o">/</span> <span class="n">denominator</span>
+    <span class="k">return</span> <span class="n">arr_mod</span>
+</pre></div>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Kohei Shinohara<br/>
+  
+      &copy; Copyright 2022, Kohei Shinohara.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
