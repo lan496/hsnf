@@ -1,4 +1,5 @@
 import numpy as np
+import pytest
 
 from hsnf.integer_system import (
     solve_frobenius_congruent,
@@ -17,13 +18,18 @@ def test_frobenius_congruent():
     assert np.allclose(basis_R @ A.T, 0)
 
 
-def test_integer_linear_system():
-    A = np.array([[6, 4, 10], [-1, 1, -5]])
-    b = np.array([4, 11])
+@pytest.mark.parametrize(
+    "A,b",
+    [
+        (np.array([[6, 4, 10], [-1, 1, -5]]), np.array([4, 11])),
+        (np.array([[1, 1, 0]]), np.array([2])),
+    ],
+)
+def test_integer_linear_system(A, b):
     basis, x_special = solve_integer_linear_system(A, b)
 
     assert np.allclose(A @ x_special, b)
-    assert np.allclose(np.remainder(basis @ A.T, 1), 0)
+    assert np.allclose(basis @ A.T, 0)
 
 
 def test_modular_integer_linear_system():
