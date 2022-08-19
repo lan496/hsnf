@@ -42,13 +42,13 @@ def solve_integer_linear_system(A: NDArrayInt, b: NDArrayInt):
 
     Returns
     -------
-    basis: array, (rank, n)
+    basis: array, (m - rank, n)
         ``basis[i, :]`` is a solution of :math:`\mathbf{Ax}=\mathbf{0}`
     x_special: array, (n, )
         Special solution :math:`\mathbf{x}_{\mathrm{special}}`
 
     """
-    H, R = column_style_hermite_normal_form(A)
+    H, R = column_style_hermite_normal_form(A)  # H = A @ R
     rank = get_triangular_rank(H)
 
     x_special = np.zeros(A.shape[1])
@@ -57,7 +57,7 @@ def solve_integer_linear_system(A: NDArrayInt, b: NDArrayInt):
         return None
     x_special = np.dot(R, x_special)
 
-    basis = R[:, :rank].T
+    basis = R[:, rank:].T
 
     return basis, x_special
 
