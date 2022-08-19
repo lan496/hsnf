@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>hsnf.integer_system &#8212; hsnf 0.3.14</title>
+    <title>hsnf.integer_system &#8212; hsnf 0.3.15</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -70,7 +70,7 @@
       
       
       
-      <h1 class="site-logo" id="site-title">hsnf 0.3.14</h1>
+      <h1 class="site-logo" id="site-title">hsnf 0.3.15</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
@@ -269,13 +269,13 @@ title="Fullscreen mode"
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    basis: array, (rank, n)</span>
+<span class="sd">    basis: array, (m - rank, n)</span>
 <span class="sd">        ``basis[i, :]`` is a solution of :math:`\mathbf{Ax}=\mathbf{0}`</span>
 <span class="sd">    x_special: array, (n, )</span>
 <span class="sd">        Special solution :math:`\mathbf{x}_{\mathrm{special}}`</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">H</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="n">column_style_hermite_normal_form</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+    <span class="n">H</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="n">column_style_hermite_normal_form</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>  <span class="c1"># H = A @ R</span>
     <span class="n">rank</span> <span class="o">=</span> <span class="n">get_triangular_rank</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
 
     <span class="n">x_special</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
@@ -284,7 +284,7 @@ title="Fullscreen mode"
         <span class="k">return</span> <span class="kc">None</span>
     <span class="n">x_special</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">x_special</span><span class="p">)</span>
 
-    <span class="n">basis</span> <span class="o">=</span> <span class="n">R</span><span class="p">[:,</span> <span class="p">:</span><span class="n">rank</span><span class="p">]</span><span class="o">.</span><span class="n">T</span>
+    <span class="n">basis</span> <span class="o">=</span> <span class="n">R</span><span class="p">[:,</span> <span class="n">rank</span><span class="p">:]</span><span class="o">.</span><span class="n">T</span>
 
     <span class="k">return</span> <span class="n">basis</span><span class="p">,</span> <span class="n">x_special</span></div>
 

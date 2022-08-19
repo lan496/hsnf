@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Integer Linear system &#8212; hsnf 0.3.14</title>
+    <title>Integer Linear system &#8212; hsnf 0.3.15</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -74,7 +74,7 @@
       
       
       
-      <h1 class="site-logo" id="site-title">hsnf 0.3.14</h1>
+      <h1 class="site-logo" id="site-title">hsnf 0.3.15</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -336,15 +336,23 @@ title="Print to PDF"
 <section id="id1">
 <h2>Integer linear system<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
 <p>For given <span class="math notranslate nohighlight">\(\mathbf{A} \in \mathbb{Z}^{m \times n}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b} \in \mathbb{Z}^{m}\)</span>, consider to solve integer linear system <span class="math notranslate nohighlight">\(\mathbf{Ax} = \mathbf{b}\)</span> in <span class="math notranslate nohighlight">\(\mathbf{x} \in \mathbb{Z}^{n}\)</span>.
-Let the Smith normal form of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> be <span class="math notranslate nohighlight">\(\mathbf{D} = \mathbf{LAR}\)</span>, where <span class="math notranslate nohighlight">\(\mathbf{L}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{R}\)</span> are unimodular matrices.</p>
+Let the Hermite normal form of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> be <span class="math notranslate nohighlight">\(\mathbf{H} = \mathbf{AR}\)</span>, where <span class="math notranslate nohighlight">\(\mathbf{R}\)</span> is unimodular and <span class="math notranslate nohighlight">\(\mathbf{H}\)</span> is lower triangular.
+The given linear system is</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}  \mathbf{LAx} &amp;= \mathbf{Lb} \\
-  \mathbf{Dy}  &amp;= \mathbf{v} \quad \mbox{where}\, \mathbf{y}:= \mathbf{R}^{-1} \mathbf{x},\, \mathbf{v}:= \mathbf{Lb} \\
-  \mathbf{y}
-    &amp;= \begin{pmatrix} \frac{v_{1}}{D_{11}} \\ \vdots \\ \frac{v_{r}}{D_{rr}} \\ 0 \\ \vdots \\ 0 \end{pmatrix}
-        + \begin{pmatrix} 0 \\ \vdots \\ 0 \\ n_{r+1} \\ \vdots \\ n_{m} \end{pmatrix}
-        \quad (\forall n_{r+1},\cdots, n_{m} \in \mathbb{Z})\end{split}\]</div>
-<p>When <span class="math notranslate nohighlight">\(v_{j} = 0(\forall j = r+1, \cdots n)\)</span>, a special solution exists.</p>
+\[\begin{split}  \begin{pmatrix}
+    H_{11} &amp;        &amp; \mathbf{O} &amp; \vdots     \\
+    \vdots &amp; \ddots &amp;            &amp; \mathbf{0} \\
+    H_{r1} &amp; \ldots &amp; H_{rr}     &amp; \vdots     \\
+    \ldots &amp; \mathbf{0} &amp; \ldots &amp; \mathbf{O} \\
+  \end{pmatrix}
+  \mathbf{y} = \mathbf{b}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{y} := \mathbf{R}^{-1}\mathbf{x}\)</span>.
+A special solution, <span class="math notranslate nohighlight">\(\mathbf{x}_{\mathrm{special}} = \mathbf{R}\mathbf{y}_{\mathrm{special}}\)</span>, is determined by Gaussian elimination if exists.
+A general solution for <span class="math notranslate nohighlight">\(\mathbf{Hy}=\mathbf{0}\)</span> is given by</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}  \mathbf{y}
+    &amp;= \begin{pmatrix} 0 \\ \vdots \\ 0 \\ n_{r+1} \\ \vdots \\ n_{m} \end{pmatrix}
+        \quad (\forall n_{r+1},\cdots, n_{m} \in \mathbb{Z}).\end{split}\]</div>
 </section>
 <section id="frobenius-congruent">
 <h2>Frobenius congruent<a class="headerlink" href="#frobenius-congruent" title="Permalink to this headline">#</a></h2>

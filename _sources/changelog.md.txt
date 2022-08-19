@@ -1,5 +1,8 @@
 # Change Log
 
+## v0.3.15
+- Fix general solutions of integer linear system: `hsnf.integer_system.solve_integer_linear_system`
+
 ## v0.3.14
 - Fix docs
 

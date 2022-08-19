@@ -3,16 +3,25 @@
 ## Integer linear system
 
 For given {math}`\mathbf{A} \in \mathbb{Z}^{m \times n}` and {math}`\mathbf{b} \in \mathbb{Z}^{m}`, consider to solve integer linear system {math}`\mathbf{Ax} = \mathbf{b}` in {math}`\mathbf{x} \in \mathbb{Z}^{n}`.
-Let the Smith normal form of {math}`\mathbf{A}` be {math}`\mathbf{D} = \mathbf{LAR}`, where {math}`\mathbf{L}` and {math}`\mathbf{R}` are unimodular matrices.
+Let the Hermite normal form of {math}`\mathbf{A}` be {math}`\mathbf{H} = \mathbf{AR}`, where {math}`\mathbf{R}` is unimodular and {math}`\mathbf{H}` is lower triangular.
+The given linear system is 
 ```{math}
-  \mathbf{LAx} &= \mathbf{Lb} \\
-  \mathbf{Dy}  &= \mathbf{v} \quad \mbox{where}\, \mathbf{y}:= \mathbf{R}^{-1} \mathbf{x},\, \mathbf{v}:= \mathbf{Lb} \\
-  \mathbf{y}
-    &= \begin{pmatrix} \frac{v_{1}}{D_{11}} \\ \vdots \\ \frac{v_{r}}{D_{rr}} \\ 0 \\ \vdots \\ 0 \end{pmatrix}
-        + \begin{pmatrix} 0 \\ \vdots \\ 0 \\ n_{r+1} \\ \vdots \\ n_{m} \end{pmatrix}
-        \quad (\forall n_{r+1},\cdots, n_{m} \in \mathbb{Z})
+  \begin{pmatrix}
+    H_{11} &        & \mathbf{O} & \vdots     \\
+    \vdots & \ddots &            & \mathbf{0} \\
+    H_{r1} & \ldots & H_{rr}     & \vdots     \\
+    \ldots & \mathbf{0} & \ldots & \mathbf{O} \\
+  \end{pmatrix}
+  \mathbf{y} = \mathbf{b}
 ```
-When {math}`v_{j} = 0(\forall j = r+1, \cdots n)`, a special solution exists.
+where {math}`\mathbf{y} := \mathbf{R}^{-1}\mathbf{x}`.
+A special solution, {math}`\mathbf{x}_{\mathrm{special}} = \mathbf{R}\mathbf{y}_{\mathrm{special}}`, is determined by Gaussian elimination if exists.
+A general solution for {math}`\mathbf{Hy}=\mathbf{0}` is given by
+```{math}
+  \mathbf{y}
+    &= \begin{pmatrix} 0 \\ \vdots \\ 0 \\ n_{r+1} \\ \vdots \\ n_{m} \end{pmatrix}
+        \quad (\forall n_{r+1},\cdots, n_{m} \in \mathbb{Z}).
+```
 
 ## Frobenius congruent
 
