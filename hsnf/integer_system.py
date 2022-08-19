@@ -52,7 +52,8 @@ def solve_integer_linear_system(A: NDArrayInt, b: NDArrayInt):
     rank = get_triangular_rank(H)
 
     x_special = np.zeros(A.shape[1])
-    x_special[:rank] = solve_triangular(H[:rank, :rank], b[:rank], lower=True)
+    if rank > 0:
+        x_special[:rank] = solve_triangular(H[:rank, :rank], b[:rank], lower=True)
     if not np.allclose(x_special, np.around(x_special)):
         return None
     x_special = np.dot(R, x_special)
