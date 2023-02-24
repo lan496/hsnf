@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>hsnf.lattice &#8212; hsnf 0.3.15</title>
+    <title>hsnf.lattice &#8212; hsnf 0.3.16</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -70,7 +70,7 @@
       
       
       
-      <h1 class="site-logo" id="site-title">hsnf 0.3.15</h1>
+      <h1 class="site-logo" id="site-title">hsnf 0.3.16</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
@@ -241,7 +241,7 @@ title="Fullscreen mode"
 
 
 <div class="viewcode-block" id="equivalent"><a class="viewcode-back" href="../../api.lattice.html#hsnf.lattice.equivalent">[docs]</a><span class="k">def</span> <span class="nf">equivalent</span><span class="p">(</span><span class="n">lattice1</span><span class="p">:</span> <span class="n">NDArrayInt</span><span class="p">,</span> <span class="n">lattice2</span><span class="p">:</span> <span class="n">NDArrayInt</span><span class="p">,</span> <span class="n">row_wise</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Return if and only if given two lattices are equivalent.</span>
 <span class="sd">    Assume both lattices are full rank.</span>
 
@@ -270,7 +270,7 @@ title="Fullscreen mode"
 
 
 <div class="viewcode-block" id="compute_union"><a class="viewcode-back" href="../../api.lattice.html#hsnf.lattice.compute_union">[docs]</a><span class="k">def</span> <span class="nf">compute_union</span><span class="p">(</span><span class="n">lattice1</span><span class="p">:</span> <span class="n">NDArrayInt</span><span class="p">,</span> <span class="n">lattice2</span><span class="p">:</span> <span class="n">NDArrayInt</span><span class="p">,</span> <span class="n">row_wise</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Return the smallest lattice containing both lattice1 and lattice2</span>
 
 <span class="sd">    The union of two lattices with basis vectors :math:`\mathbf{A}` and :math:`\mathbf{B}` is computed by a Hermite normal form of the concatenated matrices :math:`[\mathbf{A} | \mathbf{B}]`.</span>
@@ -301,7 +301,7 @@ title="Fullscreen mode"
 
 
 <div class="viewcode-block" id="compute_dual"><a class="viewcode-back" href="../../api.lattice.html#hsnf.lattice.compute_dual">[docs]</a><span class="k">def</span> <span class="nf">compute_dual</span><span class="p">(</span><span class="n">lattice</span><span class="p">,</span> <span class="n">row_wise</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Return basis of a dual lattice.</span>
 
 <span class="sd">    For lattice :math:`L`, its dual lattice is</span>
@@ -325,7 +325,7 @@ title="Fullscreen mode"
 
 
 <div class="viewcode-block" id="compute_intersection"><a class="viewcode-back" href="../../api.lattice.html#hsnf.lattice.compute_intersection">[docs]</a><span class="k">def</span> <span class="nf">compute_intersection</span><span class="p">(</span><span class="n">lattice1</span><span class="p">:</span> <span class="n">NDArrayInt</span><span class="p">,</span> <span class="n">lattice2</span><span class="p">:</span> <span class="n">NDArrayInt</span><span class="p">,</span> <span class="n">row_wise</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Return intersection lattice of lattice1 and lattice2.</span>
 
 <span class="sd">    Let a dual of lattice :math:`L` be :math:`\\tilde{L}`.</span>
