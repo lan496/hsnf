@@ -2,7 +2,7 @@
 [![testing](https://github.com/lan496/hsnf/actions/workflows/testing.yml/badge.svg?branch=master)](https://github.com/lan496/hsnf/actions/workflows/testing.yml)
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/lan496/hsnf/master.svg)](https://results.pre-commit.ci/latest/github/lan496/hsnf/master)
 [![codecov](https://codecov.io/gh/lan496/hsnf/branch/master/graph/badge.svg?token=G0Z06OQR17)](https://codecov.io/gh/lan496/hsnf)
-[![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
+[![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/lan496/hsnf/blob/master/LICENSE)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/hsnf)
 [![PyPI version](https://badge.fury.io/py/hsnf.svg)](https://badge.fury.io/py/hsnf)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/hsnf)
