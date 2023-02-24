@@ -1,5 +1,6 @@
 # hsnf
 [![testing](https://github.com/lan496/hsnf/actions/workflows/testing.yml/badge.svg?branch=master)](https://github.com/lan496/hsnf/actions/workflows/testing.yml)
+[![Documentation Status](https://readthedocs.org/projects/hsnf/badge/?version=latest)](https://hsnf.readthedocs.io/en/latest/?badge=latest)
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/lan496/hsnf/master.svg)](https://results.pre-commit.ci/latest/github/lan496/hsnf/master)
 [![codecov](https://codecov.io/gh/lan496/hsnf/branch/master/graph/badge.svg?token=G0Z06OQR17)](https://codecov.io/gh/lan496/hsnf)
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/lan496/hsnf/blob/master/LICENSE)
@@ -10,7 +11,7 @@
 
 Computing Hermite normal form and Smith normal form with transformation matrices.
 
-- Document: <https://lan496.github.io/hsnf>
+- Document: <https://hsnf.readthedocs.io/en/latest/>
 - Document(develop): <https://lan496.github.io/hsnf/develop>
 - Github: <https://github.com/lan496/hsnf>
 - PyPI: <https://pypi.org/project/hsnf>
