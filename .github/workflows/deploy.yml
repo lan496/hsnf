@@ -5,14 +5,11 @@ on:
     branches: [master]
     tags:
       - "v[0-9]+.[0-9]+.[0-9]+"
-  workflow_run:
-    workflows: [testing]
-    types: [completed]
+  workflow_dispatch:
 
 jobs:
   deploy-docs:
-    # https://github.community/t/workflow-run-completed-event-triggered-by-failed-workflow/128001
-    if: ${{ github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push' }}
+    if: ${{ github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags') }}
     runs-on: ubuntu-latest
 
     steps:
@@ -44,7 +41,6 @@ jobs:
           publish_dir: ./docs_build
 
   deploy-pypi:
-    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
     runs-on: ubuntu-latest
     needs:
       - deploy-docs
