@@ -1,22 +1,8 @@
 <!DOCTYPE html>
-<html>
 <head>
     <meta charset="utf-8">
     <title>Redirecting to https://hsnf.readthedocs.io/en/latest/</title>
-    <script>
-        window.onload = function () {
-            if (window.location.href.includes("lan496.github.io/hsnf")) {
-                const redirectLocation = window.location.href.replace(
-                    "lan496.github.io/hsnf",
-                    "hsnf.readthedocs.io/en/latest"
-                );
-                document.getElementById("body").innerHTML = "The documentation moved to Read the Docs<br/><br/>Redirecting to " + redirectLocation + " ...";
-                window.location.href = redirectLocation;
-            }
-        }
-    </script>
+    <meta http-equiv="refresh" content="0; URL=https://hsnf.readthedocs.io/en/latest/">
+    <link rel="canonical" href="https://hsnf.readthedocs.io/en/latest/">
 </head>
-<body id="body" style="text-align: center">
-    Page not found
-</body>
 </html>
