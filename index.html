@@ -5,15 +5,18 @@
     <title>Redirecting to https://hsnf.readthedocs.io/en/latest/</title>
     <script>
         window.onload = function () {
-            const destination = window.location.href;
             if (window.location.href.includes("lan496.github.io/hsnf")) {
                 const redirectLocation = window.location.href.replace(
                     "lan496.github.io/hsnf",
                     "hsnf.readthedocs.io/en/latest"
                 );
+                document.getElementById("body").innerHTML = "The documentation moved to Read the Docs<br/><br/>Redirecting to " + redirectLocation + " ...";
                 window.location.href = redirectLocation;
             }
         }
     </script>
 </head>
+<body id="body" style="text-align: center">
+    Page not found
+</body>
 </html>
