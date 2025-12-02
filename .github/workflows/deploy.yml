@@ -10,8 +10,6 @@ on:
 jobs:
   deploy-pypi:
     runs-on: ubuntu-latest
-    needs:
-      - deploy-docs
 
     steps:
       - uses: actions/checkout@v6
