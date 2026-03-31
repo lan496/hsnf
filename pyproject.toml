@@ -1,6 +1,6 @@
 [build-system]
-requires = ["setuptools>=45", "setuptools_scm[toml]>=6.2", "wheel"]
 build-backend = "setuptools.build_meta"
+requires = [ "setuptools>=45", "setuptools-scm[toml]>=6.2", "wheel" ]
 
 [project]
 name = "hsnf"
@@ -8,71 +8,68 @@ description = "Computing Hermite normal form and Smith normal form."
 readme = "README.md"
 license = "MIT"
 authors = [
-    { name = "Kohei Shinohara" },
+  { name = "Kohei Shinohara" },
 ]
 requires-python = ">=3.10"
-dependencies = [
-    "setuptools",
-    "setuptools_scm",
-    "wheel",
-    "numpy>=1.20.1",
-    "scipy",
-]
 classifiers = [
-    "Development Status :: 2 - Pre-Alpha",
-    "Intended Audience :: Science/Research",
-    "Operating System :: OS Independent",
-    "Programming Language :: Python",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: Implementation :: PyPy",
-    "Topic :: Scientific/Engineering :: Mathematics",
+  "Development Status :: 2 - Pre-Alpha",
+  "Intended Audience :: Science/Research",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Programming Language :: Python :: Implementation :: PyPy",
+  "Topic :: Scientific/Engineering :: Mathematics",
 ]
-dynamic = ["version"]
+dynamic = [ "version" ]
+dependencies = [
+  "numpy>=1.20.1",
+  "scipy",
+  "setuptools",
+  "setuptools-scm",
+  "wheel",
+]
+optional-dependencies.dev = [
+  "mypy",
+  "pre-commit",
+  "pytest",
+  "pytest-cov",
+  "ruff",
+]
+optional-dependencies.docs = [
+  "myst-parser",
+  "sphinx",
+  "sphinx-autobuild",
+  "sphinx-book-theme",
+  "sphinxcontrib-bibtex",
+]
+urls.Documentation = "https://hsnf.readthedocs.io/en/latest/"
+urls.Homepage = "https://github.com/lan496/hsnf"
+urls.Repository = "https://github.com/lan496/hsnf"
 
-[project.optional-dependencies]
-dev = [
-    "pytest",
-    "pytest-cov",
-    "pre-commit",
-    "ruff",
-    "mypy",
-]
-docs = [
-    "sphinx",
-    "sphinx-autobuild",
-    "sphinxcontrib-bibtex",
-    "myst-parser",
-    "sphinx-book-theme",
-]
-
-[project.urls]
-Homepage = "https://github.com/lan496/hsnf"
-Documentation = "https://hsnf.readthedocs.io/en/latest/"
-Repository = "https://github.com/lan496/hsnf"
+[tool.setuptools]
+package-data.hsnf = [ "py.typed" ]
+packages.find.exclude = [ "tests" ]
 
 [tool.setuptools_scm]
 
-[tool.setuptools.packages.find]
-exclude = ["tests"]
-
-[tool.setuptools.package-data]
-hsnf = ["py.typed"]
-
-[tool.pytest.ini_options]
-testpaths = ["tests"]
-
-[tool.coverage.run]
-omit = ["tests/"]
-
 [tool.ruff]
 line-length = 99
-exclude = ["docs"]
-
-[tool.ruff.lint]
-select = ["E", "F", "W", "C", "B", "UP", "I"]
-ignore = ["E203", "E231", "E501"]
+exclude = [ "docs" ]
+lint.select = [ "B", "C", "E", "F", "I", "UP", "W" ]
+lint.ignore = [ "E203", "E231", "E501" ]
 
 [tool.mypy]
 exclude = [
-  'docs',
+  "docs",
 ]
+
+[tool.pytest]
+ini_options.testpaths = [ "tests" ]
+
+[tool.coverage]
+run.omit = [ "tests/" ]
