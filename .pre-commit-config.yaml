@@ -7,38 +7,16 @@ repos:
       - id: check-json
       - id: debug-statements
       - id: end-of-file-fixer
-  # formatter
-  - repo: https://github.com/psf/black
-    rev: 23.9.1
+  # linter and formatter
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.11.4
     hooks:
-    - id: black
-  # linter
-  - repo: https://github.com/PyCQA/flake8
-    rev: 6.1.0
-    hooks:
-    - id: flake8
-      exclude: ^docs/
+      - id: ruff
+        args: [--fix]
+      - id: ruff-format
   # type annotation
   - repo: https://github.com/pre-commit/mirrors-mypy
     rev: v1.5.1
     hooks:
     - id: mypy
       exclude: ^docs/
-  # isort
-  - repo: https://github.com/pycqa/isort
-    rev: 5.12.0
-    hooks:
-      - id: isort
-        name: isort (python)
-        args: ["--profile", "black"]
-      - id: isort
-        name: isort (cython)
-        types: [cython]
-      - id: isort
-        name: isort (pyi)
-        types: [pyi]
-  # Upgrade syntax
-  - repo: https://github.com/asottile/pyupgrade
-    rev: v3.10.1
-    hooks:
-      - id: pyupgrade

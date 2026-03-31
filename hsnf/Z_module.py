@@ -1,7 +1,5 @@
 # Copyright (c) 2019 Kohei Shinohara
 # Distributed under the terms of the MIT License.
-from __future__ import annotations
-
 import warnings
 
 import numpy as np
