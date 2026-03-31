@@ -1,44 +1,42 @@
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
+    rev: v6.0.0
     hooks:
       - id: check-added-large-files
       - id: check-yaml
       - id: check-json
       - id: debug-statements
       - id: end-of-file-fixer
-  # formatter
-  - repo: https://github.com/psf/black
-    rev: 23.9.1
+      - id: check-toml
+      - id: check-merge-conflict
+      - id: detect-private-key
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.15.8
     hooks:
-    - id: black
-  # linter
-  - repo: https://github.com/PyCQA/flake8
-    rev: 6.1.0
-    hooks:
-    - id: flake8
-      exclude: ^docs/
-  # type annotation
+      - id: ruff-format
+        types_or: [python, pyi, jupyter]
+      - id: ruff
+        args: [ "--fix", "--show-fixes"]
+        types_or: [python, pyi]
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.5.1
+    rev: v1.19.1
     hooks:
     - id: mypy
       exclude: ^docs/
-  # isort
-  - repo: https://github.com/pycqa/isort
-    rev: 5.12.0
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.19.1
     hooks:
-      - id: isort
-        name: isort (python)
-        args: ["--profile", "black"]
-      - id: isort
-        name: isort (cython)
-        types: [cython]
-      - id: isort
-        name: isort (pyi)
-        types: [pyi]
-  # Upgrade syntax
-  - repo: https://github.com/asottile/pyupgrade
-    rev: v3.10.1
+    - id: mypy
+      exclude: ^docs/
+  - repo: https://github.com/astral-sh/uv-pre-commit
+    rev: 0.11.2
     hooks:
-      - id: pyupgrade
+      - id: uv-lock
+  - repo: https://github.com/python-jsonschema/check-jsonschema
+    rev: 0.37.1
+    hooks:
+      - id: check-github-workflows
+  - repo: https://github.com/tox-dev/pyproject-fmt
+    rev: v2.20.0
+    hooks:
+    - id: pyproject-fmt

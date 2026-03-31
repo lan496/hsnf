@@ -1,7 +1,5 @@
 # Copyright (c) 2019 Kohei Shinohara
 # Distributed under the terms of the MIT License.
-from __future__ import annotations
-
 import warnings
 
 import numpy as np
@@ -25,7 +23,7 @@ class ZmoduleHomomorphism:
 
     def __init__(self, A, basis_from, basis_to):
         if A.dtype not in [np.int32, np.int64]:
-            warnings.warn("Decomposed matrix should be integer.")
+            warnings.warn("Decomposed matrix should be integer.", stacklevel=2)
 
         self._A = A
         self._basis_from = basis_from

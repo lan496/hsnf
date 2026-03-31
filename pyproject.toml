@@ -1,34 +1,75 @@
 [build-system]
-requires = ["setuptools>=45", "setuptools_scm[toml]>=6.2", "wheel"]
 build-backend = "setuptools.build_meta"
+requires = [ "setuptools>=45", "setuptools-scm[toml]>=6.2", "wheel" ]
 
-# Enable version inference
+[project]
+name = "hsnf"
+description = "Computing Hermite normal form and Smith normal form."
+readme = "README.md"
+license = "MIT"
+authors = [
+  { name = "Kohei Shinohara" },
+]
+requires-python = ">=3.10"
+classifiers = [
+  "Development Status :: 2 - Pre-Alpha",
+  "Intended Audience :: Science/Research",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Programming Language :: Python :: Implementation :: PyPy",
+  "Topic :: Scientific/Engineering :: Mathematics",
+]
+dynamic = [ "version" ]
+dependencies = [
+  "numpy>=1.20.1",
+  "scipy",
+  "setuptools",
+  "setuptools-scm",
+  "wheel",
+]
+optional-dependencies.dev = [
+  "mypy",
+  "pre-commit",
+  "pytest",
+  "pytest-cov",
+  "ruff",
+]
+optional-dependencies.docs = [
+  "myst-parser",
+  "sphinx",
+  "sphinx-autobuild",
+  "sphinx-book-theme",
+  "sphinxcontrib-bibtex",
+]
+urls.Documentation = "https://hsnf.readthedocs.io/en/latest/"
+urls.Homepage = "https://github.com/lan496/hsnf"
+urls.Repository = "https://github.com/lan496/hsnf"
+
+[tool.setuptools]
+package-data.hsnf = [ "py.typed" ]
+packages.find.exclude = [ "tests" ]
+
 [tool.setuptools_scm]
 
-[tool.pytest.ini_options]
-testpaths = ["tests"]
-
-[tool.black]
+[tool.ruff]
 line-length = 99
-target-version = ['py38', 'py39', 'py310']
-include = '\.pyi?$'
-exclude = '''
-/(
-    \.eggs
-  | \.git
-  | \.hg
-  | \.mypy_cache
-  | \.tox
-  | \.venv
-  | _build
-  | buck-out
-  | build
-  | dist
-  | docs
-)/
-'''
+exclude = [ "docs" ]
+lint.select = [ "B", "C", "E", "F", "I", "UP", "W" ]
+lint.ignore = [ "E203", "E231", "E501" ]
 
 [tool.mypy]
 exclude = [
-  'docs',
+  "docs",
 ]
+
+[tool.pytest]
+ini_options.testpaths = [ "tests" ]
+
+[tool.coverage]
+run.omit = [ "tests/" ]

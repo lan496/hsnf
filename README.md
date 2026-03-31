@@ -78,7 +78,7 @@ or in local:
 ```shell
 git clone git@github.com:lan496/hsnf.git
 cd hsnf
-pip install -e .[dev,docs]
+uv sync --all-extras
 ```
 
 ## References

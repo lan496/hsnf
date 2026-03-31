@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import numpy as np
 from scipy.linalg import solve_triangular
 
@@ -215,12 +213,12 @@ def _solve_modular_integer_linear_system_special(D: NDArrayInt, Lb: NDArrayInt, 
     """
     factors = eratosthenes(q)
     specials = []
-    for p, l in factors.items():
-        sol = _solve_modular_integer_linear_system_special_prime_power(D, Lb, p**l, rank)
+    for p, exp in factors.items():
+        sol = _solve_modular_integer_linear_system_special_prime_power(D, Lb, p**exp, rank)
         if sol is None:
             return None
-        assert np.allclose(np.mod(D @ sol - Lb, p**l), 0)
-        specials.append((sol, p**l))
+        assert np.allclose(np.mod(D @ sol - Lb, p**exp), 0)
+        specials.append((sol, p**exp))
 
     y_special, _ = crt_on_list(specials)
 
