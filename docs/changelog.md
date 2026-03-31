@@ -1,5 +1,7 @@
 # Change Log
 
+Release notes are migrated to GitHub Release since v0.4.0.
+
 ## v0.3.16
 - Migrate documents to Read the Docs
 
